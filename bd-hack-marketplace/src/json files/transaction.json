@@ -1,0 +1,42 @@
+{
+	{
+		"tid" : "1",
+		"pid" : "3",
+		"did" : "1",
+		"msg" : "Would recommend not using hardwood floor because it would be easily scratched. Can start working immediately.", 
+		"rate" : "500",
+		"status" : "pending",
+	},
+	{
+		"tid" : "2",
+		"pid" : "3",
+		"did" : "2",
+		"msg" : "Change the table top material to marble, it would be a better fit for the room. Also the toilet should be made of ceramic, not cork.", 
+		"rate" : "760",
+		"status" : "accepted",
+	},
+	{
+		"tid" : "3",
+		"pid" : "3",
+		"did" : "3",
+		"msg" : "Good room. Available at anytime.", 
+		"rate" : "480",
+		"status" : "pending",
+	},
+	{
+		"tid" : "4",
+		"pid" : "4",
+		"did" : "3",
+		"msg" : "The room seems good, I can start working on the 15th.", 
+		"rate" : "350",
+		"status" : "pending",
+	},
+	{
+		"tid" : "5",
+		"pid" : "4",
+		"did" : "4",
+		"msg" : "Since its a washroom, you should use tile for the flooring and not hardwood. Other than that the room seems good and I can start work anytime.", 
+		"rate" : "1000",
+		"status" : "pending",
+	},
+}
