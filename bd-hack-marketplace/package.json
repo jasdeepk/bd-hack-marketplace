@@ -1,21 +1,35 @@
 {
-  "name": "bd-hack-marketplace",
-  "version": "0.1.0",
+  "name": "react-tutorial",
+  "version": "0.0.0",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.4.1"
-  },
+  "license": "UNLICENSED",
+  "description": "Code from the React tutorial.",
+  "main": "server.js",
   "dependencies": {
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
   },
+  "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reactjs/react-tutorial.git"
+  },
+  "keywords": [
+    "react",
+    "tutorial",
+    "comment",
+    "example"
+  ],
+  "author": "petehunt",
+  "bugs": {
+    "url": "https://github.com/reactjs/react-tutorial/issues"
+  },
+  "homepage": "https://github.com/reactjs/react-tutorial",
+  "engines": {
+    "node": "0.12.x"
   }
 }

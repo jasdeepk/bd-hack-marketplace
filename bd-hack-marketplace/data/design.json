@@ -1,0 +1,77 @@
+[{
+    "did": "1",
+    "name": "Design 1",
+    "img": "imgs/3984510975.png",
+    "pid": "1",
+    "rooomtype": "Bathroom",
+    "startdeadline": "2016-10-28",
+    "enddeadline": "2016-12-23",
+    "postdate": "2016-09-17",
+    "location": "Vancouver, BC",
+    "materials": [{
+        "mid": "1",
+        "name": "carpet flooring"
+    }, {
+        "mid": "2",
+        "name": "wood shelving"
+    }],
+    "sqrft": "20",
+    "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
+}, {
+    "did": "2",
+    "name": "Design 2",
+    "img": "picture/url/here",
+    "pid": "1",
+    "rooomtype": "Bedroom",
+    "startdeadline": "2016-10-29",
+    "enddeadline": "2016-12-24",
+    "postdate": "2016-09-18",
+    "location": "Richmond, BC",
+    "materials": [{
+        "mid": "1",
+        "name": "carpet flooring"
+    }, {
+        "mid": "2",
+        "name": "wood shelving"
+    }],
+    "sqrft": "20",
+    "desc": "This project is awesome! I want to hire someone to fix up my bedroom."
+}, {
+    "did": "3",
+    "name": "Design 3",
+    "img": "picture/url/here",
+    "pid": "2",
+    "rooomtype": "Master Bedroom",
+    "startdeadline": "2016-11-28",
+    "enddeadline": "2017-01-23",
+    "postdate": "2016-10-11",
+    "location": "Tssawasawasawassen, BC",
+    "materials": [{
+        "mid": "1",
+        "name": "carpet flooring"
+    }, {
+        "mid": "2",
+        "name": "wood shelving"
+    }],
+    "sqrft": "20",
+    "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
+}, {
+    "did": "4",
+    "name": "Design 4",
+    "img": "picture/url/here",
+    "pid": "2",
+    "rooomtype": "Garage",
+    "startdeadline": "2016-03-28",
+    "enddeadline": "2017-06-24",
+    "postdate": "2016-02-17",
+    "location": "Surrey, BC",
+    "materials": [{
+        "mid": "1",
+        "name": "carpet flooring"
+    }, {
+        "mid": "2",
+        "name": "wood shelving"
+    }],
+    "sqrft": "20",
+    "desc": "This project is awesome! I want to hire someone to fix up my garage."
+}]
