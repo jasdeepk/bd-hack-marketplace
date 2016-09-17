@@ -36,8 +36,6 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/design', function(req, res) {
-  console.log(req);
-  console.log(res);
   fs.readFile(COMMENTS_FILE, function(err, data) {
     if (err) {
       console.error(err);
