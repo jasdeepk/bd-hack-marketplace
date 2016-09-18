@@ -60,23 +60,37 @@ var Pitch = React.createClass({
 	render:function() {
 
 		return (	
-			 <div className="pitchDiv">
-			 	<li className="list-group-item" key={this.state.designData.did}>
-            		<div className="media">
-              		<div className="media-left">
-                	<img className="media-object" src={this.state.designData.img} width="200" height="200"></img>
+      <div className= "container">
+      <div className="row" style={{marginTop: 3 + 'em'}}>
+       </div>
+        <div className="row">
+          <div className="col-md-12">
+          <div className="col-md-6">
+  			     <div className="pitchDiv">
+  			 	       <li className="list-group-item" key={this.state.designData.did}>
+              		<div className="media">
+                		<div className="media-left">
+                  	<img className="media-object" src={this.state.designData.img} width="200" height="200"></img>
+                		</div>
+                		<div className="media-body">
+                  	<br /> 
+                  	<h2 className="media-heading">{this.state.designData.name}</h2>
+                  	<h4 className="media-heading">Room Type: {this.state.designData.rooomtype}</h4>
+                  	<h4 className="media-heading">Starts on: {this.state.designData.startdeadline} Ends on: {this.state.designData.enddeadline}</h4>
+                  	<h4 className="media-heading">{this.state.designData.sqrft} Sqft</h4>
+                		</div>
               		</div>
-              		<div className="media-body">
-                	<br /> 
-                	<h2 className="media-heading">{this.state.designData.name}</h2>
-                	<h4 className="media-heading">Room Type: {this.state.designData.rooomtype}</h4>
-                	<h4 className="media-heading">Starts on: {this.state.designData.startdeadline} Ends on: {this.state.designData.enddeadline}</h4>
-                	<h4 className="media-heading">{this.state.designData.sqrft} Sqft</h4>
-              		</div>
-            		</div>
-          		</li>
-			 	<CommentForm onCommentSubmit={this.handleCommentSubmit} />
-			 </div>
+            		</li>
+            </div>
+          </div>
+        <div className="col-md-6">
+  			 	<CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        </div>
+  		 </div>
+       </div>
+       <div className="row" style={{marginBottom: 3 + 'em'}}>
+       </div>
+     </div>
 		);
 	}
 });
@@ -117,14 +131,22 @@ var CommentForm = React.createClass({
           value={this.state.msg}
           onChange={this.handleMsgChange}
         /> <br />
-        <input
-          className="rateBox"
-          type="text"
-          placeholder="Charge rate"
-          value={this.state.rate}
-          onChange={this.handleRateChange}
-        />
-        <input className="test" type="submit" onClick={this.handleSubmit} value="Post" />
+        <div className="row" style={{marginTop: 1 + 'em'}}>
+       </div>
+        <div className="row">
+          <div className="col-md-8">
+          <input
+            className="rateBox"
+            type="text"
+            placeholder="Charge rate"
+            value={this.state.rate}
+            onChange={this.handleRateChange}
+          />
+          </div>
+          <div className="col-md-3" style={{marginTop: 0.5 + 'em'}}>
+            <input className="test btn btn-primary" type="submit" onClick={this.handleSubmit} value="Send pitch to customer" />
+          </div>
+        </div>
       </form>
       </div>
     );

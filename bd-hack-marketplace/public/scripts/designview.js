@@ -65,36 +65,42 @@ var DesignView = React.createClass({
 		      
 		      <DesignTitle data={this.state.data} />
 		      <div className="row">
-		      	<div className="col-md-6">
-		      		<div className="row">
-		      			<PhotoForm data={this.state.data}/>
-		      		</div>
-		      	</div>
-		      	<div className="col-md-6">
-		      		<div className="row">
-		      			<ProductList data={this.state.data} />
-		      			<div className="col-md-6">
-		      				<h4><div id="grandtotal"></div></h4>
-	      				</div>
-	      				<div className="col-md-6">
-	      					<div className="col-md-offset-8 col-md-4">
-				      			<h4><button className="btn productpost" onClick={() => {this.updateProduct(this.state.data);updateTotal();}} >Update</button></h4>
-	      					</div>
-	      				</div>
-		      		</div>
-      				<div className="row">
-      					<div className="col-md-12">
-	      					<div className="alert alert-success collapse">
-	      						<a href="#" className="close" data-hide="alert" aria-label="close">&times;</a>
-						  		<strong>Design products have been updated!</strong>
+		      	<div className="col-md-12">
+			      	<div className="col-md-6">
+			      		<div className="row">
+			      			<PhotoForm data={this.state.data}/>
+			      		</div>
+			      	</div>
+			      	<div className="col-md-6">
+			      		<div className="row">
+			      			<ProductList data={this.state.data} />
+			      			<div className="col-md-6">
+			      				<h4><div id="grandtotal"></div></h4>
+		      				</div>
+		      				<div className="col-md-6">
+		      					<div className="col-md-offset-7 col-md-4">
+					      			<h4><button className="btn btn-primary productpost" onClick={() => {this.updateProduct(this.state.data);updateTotal();}} >Update</button></h4>
+		      					</div>
+		      				</div>
+			      		</div>
+	      				<div className="row">
+	      					<div className="col-md-12">
+		      					<div className="alert alert-success collapse">
+		      						<a href="#" className="close" data-hide="alert" aria-label="close">&times;</a>
+							  		<strong>Design products have been updated!</strong>
+								</div>
 							</div>
 						</div>
-					</div>
-		      		<div className="row">
-			      		<DescBox data={this.state.data} />
-			      	</div>
-		      		<div className="row" style={{marginTop: 1 + 'em'}}>
-			      		<button className="btn" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
+			      		<div className="row">
+				      		<DescBox data={this.state.data} />
+				      	</div>
+			      		<div className="row" style={{marginBottom: 3 + 'em'}}>
+				      		<div className="col-md-offset-6">
+					      		<div className="col-md-offset-6 col-md-5">
+						      		<button className="btn btn-primary" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
+						      	</div>
+					      	</div>
+				      	</div>
 			      	</div>
 		      	</div>
 		      </div>

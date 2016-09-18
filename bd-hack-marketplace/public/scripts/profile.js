@@ -1,7 +1,6 @@
 var userUrl = "/api/person/" + localStorage.pid;
 var reviewUrl = "/api/personReviews/" + localStorage.pid;
 var transactionUrl = "/api/personTransactions/" + localStorage.pid;
-var GlobalFlag = false;
 
 var Profile = React.createClass({
   componentDidMount: function() {
@@ -61,7 +60,7 @@ var ProfileInfo = React.createClass({
                 <h1 className="personName">
                   {this.state.personName}
                 </h1>
-                
+                <br />
                 <h4 className="personDesc">
                   {this.state.personDesc}
                 </h4>
@@ -116,7 +115,7 @@ var ProfileTransactions = React.createClass({
     });
     
 return (
-<a href="design_detail.html" className="transactions-list-group-item" key={transaction.tid} onClick={() => { that.setSelectedDesign(transaction) }}>
+        <div className="transactions-list-group-item" key={transaction.tid}>
           <div className="media">
             <div className="media-body">
               <br /> 
@@ -136,12 +135,9 @@ return (
               </div>
             </div>
           </div>
-        </a>
+        </div>
   )
 
-  },
-  setSelectedDesign: function(transaction) {
-    localStorage.selectedDesignId = transaction.did;
   },
   render: function() {
     var that = this;

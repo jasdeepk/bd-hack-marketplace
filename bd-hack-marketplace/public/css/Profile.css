@@ -55,8 +55,3 @@
     border: 1px solid #ddd;
 
 }
-
-.transactions-list-group-item:hover {
-	text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #aaaaaa;
-}

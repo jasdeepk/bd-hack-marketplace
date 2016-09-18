@@ -5,7 +5,7 @@
     "pass": "password",
     "img": "imgs/luke-contractor-pic.jpg",
     "desc": "Hi I'm Luke Skywalker! I love the force and my dad definitely is NOT the dark lord of the Sith!",
-    "priviledge": "DESIGNER"
+    "privilege": "DESIGNER"
 }, {
     "pid": "2",
     "name": "Darth Vader",
@@ -13,7 +13,7 @@
     "pass": "password",
     "img": "imgs/vader-contractor-pic.jpg",
     "desc": "Hi I'm Darth Vader! I'm a master of the force, a deadbeat dad and all around great guy!",
-    "priviledge": "DESIGNER"
+    "privilege": "DESIGNER"
 }, {
     "pid": "3",
     "name": "Han Solo",
@@ -21,7 +21,7 @@
     "pass": "password",
     "img": "imgs/han-contractor-pic.jpg",
     "desc": "Hi I'm Han Solo. I shot first.",
-    "priviledge": "CONTRACTOR"
+    "privilege": "CONTRACTOR"
 }, {
     "pid": "4",
     "name": "Kylo Ren",
@@ -29,7 +29,7 @@
     "pass": "password",
     "img": "imgs/kylo-contractor-pic.jpg",
     "desc": "Hi I'm Kylo Ren! My dad sucks and I have teenage angst!",
-    "priviledge": "CONTRACTOR"
+    "privilege": "CONTRACTOR"
 },
 {
     "pid": "5",
@@ -38,5 +38,5 @@
     "pass": "password",
     "img": "imgs/rey-contractor-pic.jpg",
     "desc": "Hi I'm Rey! I'm for sure not a skywalker/solo kid, I swear.",
-    "priviledge": "CONTRACTOR"
+    "privilege": "CONTRACTOR"
 }]
