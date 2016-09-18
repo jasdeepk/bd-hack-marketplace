@@ -102,6 +102,7 @@ var CommentForm = React.createClass({
     }
     this.props.onCommentSubmit({msg: msg, rate: rate, pid: pid, did:did});
     this.setState({msg: '', rate: ''});
+    window.location = "profile.html";
   },
   render: function() {
     return (
