@@ -40,6 +40,15 @@
     border: 1px solid #ddd;
 }
 
+.transactions-list-group-item {
+  position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 /*.profiletransactionsmodal{}
 
 .profiletransactionsmodal:hover {

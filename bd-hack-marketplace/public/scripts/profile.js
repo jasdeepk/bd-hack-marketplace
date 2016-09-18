@@ -1,4 +1,6 @@
 var userUrl = "/api/person/" + localStorage.pid;
+var reviewUrl = "/api/personReviews/" + localStorage.pid;
+var transactionUrl = "/api/personTransactions/" + localStorage.pid;
 
 var Profile = React.createClass({
   render: function() {
@@ -11,10 +13,10 @@ var Profile = React.createClass({
         <div className="profile">
         <div className="col-md-8">
           <ProfileInfo personjson={userUrl} />
-          <ProfileTransactions transactionjson="/api/transaction" />
+          <ProfileTransactions transactionjson={transactionUrl} />
 </div>
           <div className="col-md-4">
-          <ProfileReviews reviewjson="/api/review" />
+          <ProfileReviews reviewjson={reviewUrl} />
           </div>
         </div>
       </div>
@@ -29,15 +31,9 @@ var ProfileInfo = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        // TODO: (waitin for logged in user with session data)
-        //for all persons {
             if (data != null){
-          // if person.pid == session.user.pid {
               this.setState({personName: data.name , personImg: data.img, personDesc: data.desc});
             }
-            // break;
-          // }
-        // }
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.personjson, status, err.toString());
@@ -85,13 +81,9 @@ var ProfileTransactions = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        // TODO: (waitin for logged in user with session data)
-        //for all transactions {
-          // if transaction.pid == session.user.pid {
-            // add to a list
-            this.setState({personTransactions: [data[0], data[1]] });
-          // }
-        // }
+        if (data != null){
+          this.setState({personTransactions: data });
+        }
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.transactionjson, status, err.toString());
@@ -107,11 +99,10 @@ var ProfileTransactions = React.createClass({
   render: function() {
     var transactions = this.state.personTransactions.map(function(transaction) {
       return (
-        <li className="list-group-item" key={transaction.tid}>
+        <li className="transactions-list-group-item" key={transaction.tid}>
           <div className="media">
             <div className="media-body">
               <br /> 
-              <h2 className="media-heading">Pid: {transaction.pid}</h2>
               <h2 className="media-heading">Did: {transaction.did}</h2>
               <h4 className="media-heading">Message: {transaction.msg}</h4>
               <h4 className="media-heading">Rate: {transaction.rate}</h4>
@@ -147,13 +138,9 @@ var ProfileReviews = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        // TODO: (waitin for logged in user with session data)
-        //for all reviews {
-          // if review.pid == session.user.pid {
-            // add to a list
-            this.setState({personReviews: [data[0], data[1]] });
-          // }
-        // }
+        if (data != null){
+          this.setState({personReviews: data });
+        }
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.reviewjson, status, err.toString());

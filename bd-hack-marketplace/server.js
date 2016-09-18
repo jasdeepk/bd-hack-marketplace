@@ -89,6 +89,20 @@ app.get('/api/review', function(req, res) {
   });
 });
 
+// GET Reviews BY PID
+app.get('/api/personReviews/:id', function(req, res) {
+  fs.readFile(REVIEW_FILE, function(err, data) {
+    var result = JSON.parse(data)
+    var reviews = [];
+    for (var i = result.length - 1; i >= 0; i--) {
+      if (result[i].pid === req.params.id) {
+        reviews.push(result[i]);
+      }
+    };
+    res.json(reviews);
+  });
+});
+
 // GET TRANSACTION JSON FILE CONTENTS
 app.get('/api/transaction', function(req, res) {
   fs.readFile(TRANSACTION_FILE, function(err, data) {
@@ -97,6 +111,20 @@ app.get('/api/transaction', function(req, res) {
       process.exit(1);
     }
     res.json(JSON.parse(data));
+  });
+});
+
+// GET Transactions BY PID
+app.get('/api/personTransactions/:id', function(req, res) {
+  fs.readFile(TRANSACTION_FILE, function(err, data) {
+    var result = JSON.parse(data);
+    var transactions = [];
+    for (var i = result.length - 1; i >= 0; i--) {
+      if (result[i].pid === req.params.id) {
+        transactions.push(result[i]);
+      }
+    };
+    res.json(transactions);
   });
 });
 
