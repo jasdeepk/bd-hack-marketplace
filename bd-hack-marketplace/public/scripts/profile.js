@@ -1,10 +1,16 @@
 var Profile = React.createClass({
   render: function() {
     return (
-      <div className="commentBox">
-        <ProfileInfo personjson="/api/person" />
-        <ProfileProjects designjson="/api/design" />
-        <ProfileReviews reviewjson="/api/review" />
+      <div>
+        <div className="headerMain">
+              <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
+              <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
+        </div>
+        <div className="commentBox">
+          <ProfileInfo personjson="/api/person" />
+          <ProfileProjects designjson="/api/design" />
+          <ProfileReviews reviewjson="/api/review" />
+        </div>
       </div>
     );
   }

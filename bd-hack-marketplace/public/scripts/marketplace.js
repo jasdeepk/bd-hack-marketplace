@@ -34,12 +34,11 @@ var Marketplace = React.createClass({
   componentDidMount: function() {
     this.loadDesignsFromServer();
     this.loadUserFromServer();
-    // setInterval(this.loadDesignsFromServer, this.props.pollInterval);
   },
   render: function() {
       var designs = this.state.designData.map(function(design) {
         return (
-          <a href="#" className="list-group-item" key={design.did}>
+          <a href="design_detail.html" className="list-group-item" key={design.did}>
             <div className="media">
               <div className="media-left">
                 <img className="media-object" src={design.img} width="200" height="200"></img>
@@ -58,7 +57,10 @@ var Marketplace = React.createClass({
 
       return (
         <div>
-          <h2> {this.state.userData.name} </h2>
+          <div className="headerMain">
+            <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
+            <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
+          </div>
           <div className="list-group">
             {designs}
           </div>
