@@ -1,32 +1,26 @@
-{
-	{
-		"crid" : "1",
-		"pid" : "3",
-		"text" : "Great contractor! Finished the job quickly and was super helpful with my questions.",
-		"rating" : "10", 
-	},
-	{
-		"crid" : "2",
-		"pid" : "3",
-		"text" : "Got the job done and for a decent price!",
-		"rating" : "8", 
-	},
-	{
-		"crid" : "3",
-		"pid" : "4",
-		"text" : "Came all the way to Endor to renovate my room in the Death Star! Can't wait to start furnishing it.",
-		"rating" : "2", 
-	},
-	{
-		"crid" : "4",
-		"pid" : "4",
-		"text" : "Spent the entire project complaining about the dark side of the force. Would not use again.",
-		"rating" : "2", 
-	},
-	{
-		"crid" : "5",
-		"pid" : "4",
-		"text" : "Keeps trying to convince me to turn to the dark side, but besides that he did a good job.",
-		"rating" : "5", 
-	},
-}
+[{
+	"crid": "1",
+	"pid": "3",
+	"text": "Great contractor! Finished the job quickly and was super helpful with my questions.",
+	"rating": "10"
+}, {
+	"crid": "2",
+	"pid": "3",
+	"text": "Got the job done and for a decent price!",
+	"rating": "8"
+}, {
+	"crid": "3",
+	"pid": "4",
+	"text": "Came all the way to Endor to renovate my room in the Death Star! Can't wait to start furnishing it.",
+	"rating": "2"
+}, {
+	"crid": "4",
+	"pid": "4",
+	"text": "Spent the entire project complaining about the dark side of the force. Would not use again.",
+	"rating": "2"
+}, {
+	"crid": "5",
+	"pid": "4",
+	"text": "Keeps trying to convince me to turn to the dark side, but besides that he did a good job.",
+	"rating": "5"
+}]
