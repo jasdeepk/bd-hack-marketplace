@@ -73,6 +73,7 @@ var ProfileInfo = React.createClass({
   }
 });
 
+var unrendered = true;
 var ProfileTransactions = React.createClass({
   loadProfileTransactionsFromServer: function() {
     $.ajax({
@@ -95,22 +96,24 @@ var ProfileTransactions = React.createClass({
   getInitialState: function() {
     return {personTransactions: [], transactionDesign: {} };
   },
-  getTransactionDesign: function(did){
-    var designjson = "/api/design/" + did;
-    $.ajax({
-      url: designjson,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        if (data != null){
-          this.setState({transactionDesign: data });
-        }
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.designjson, status, err.toString());
-      }.bind(this)
-    });
-  },
+  // getTransactionDesign: function(did){
+  //   var designjson = "/api/design/" + did;
+  //   $.ajax({
+  //     url: designjson,
+  //     dataType: 'json',
+  //     cache: false,
+  //     success: function(data) {
+  //       if (data != null){
+  //         unrendered = false;
+  //         this.setState({transactionDesign: data });
+  //         return data;
+  //       }
+  //     }.bind(this),
+  //     error: function(xhr, status, err) {
+  //       console.error(this.props.designjson, status, err.toString());
+  //     }.bind(this)
+  //   });
+  // },
   render: function() {
     var that = this;
     var transactions = this.state.personTransactions.map(function(transaction) {
@@ -119,14 +122,13 @@ var ProfileTransactions = React.createClass({
           <div className="media">
             <div className="media-body">
               <br /> 
-              {that.getTransactionDesign(transaction.did)}
               <div className="col-md-4">
                 <div className="media-left">
-                  <img className="media-object img" src={that.state.transactionDesign.img} width="200" height="200"></img>
+                  <img className="media-object img" src={transaction.img} width="200" height="200"></img>
                 </div>
               </div>
               <div className="col-md-8">
-                <h2 className="media-heading">{that.state.transactionDesign.name}</h2>
+                <h2 className="media-heading">{transaction.name}</h2>
                 <br /> 
                 <h4 className="media-heading">Message: {transaction.msg}</h4>
                 <br /> 
