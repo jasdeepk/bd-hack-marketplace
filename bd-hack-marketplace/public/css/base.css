@@ -95,6 +95,11 @@ ul {
   margin-left: 75%!important;
 }
 
+.designName {
+  font-size: 40px;
+  padding-top: 10px;
+}
+
 .container {
   background-color: white;
 }

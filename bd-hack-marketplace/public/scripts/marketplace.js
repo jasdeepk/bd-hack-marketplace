@@ -52,9 +52,10 @@ var Marketplace = React.createClass({
               </div>
               <div className="media-body">
                 <br /> 
-                <h2 className="media-heading">{design.name}</h2>
+                <h4 className="media-heading designName">{design.name}</h4>
                 <h4 className="media-heading">Room Type: {design.rooomtype}</h4>
                 <h4 className="media-heading">Starts on: {design.startdeadline} Ends on: {design.enddeadline}</h4>
+                <h4 className="media-heading">Location: {design.location}</h4>
                 <h4 className="media-heading">{design.sqrft} Sqft</h4>
               </div>
             </div>
