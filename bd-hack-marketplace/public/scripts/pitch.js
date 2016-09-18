@@ -54,6 +54,7 @@ var Pitch = React.createClass({
 	componentDidMount: function() {
 		this.loadDesignsFromServer();
     this.loadTransactionsFromServer();
+    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
 	},
 	render:function() {
 		var ddata = this.state.designData[1];
