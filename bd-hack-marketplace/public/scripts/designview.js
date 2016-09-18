@@ -62,39 +62,57 @@ var DesignView = React.createClass({
 	render: function() {
 	    return (
 	      <div className="container designview">
-		      <div className="headerMain">
-	            <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
-	            <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
-	          </div>
+		      
 		      <DesignTitle data={this.state.data} />
 		      <div className="row">
 		      	<div className="col-md-6">
 		      		<div className="row">
 		      			<PhotoForm data={this.state.data}/>
 		      		</div>
-		      		<div className="row" style={{marginTop: 1 + 'em'}}>
-			      		<button className="btn-lg" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
-			      	</div>
 		      	</div>
 		      	<div className="col-md-6">
 		      		<div className="row">
 		      			<ProductList data={this.state.data} />
-		      			<h3><div id="grandtotal"></div></h3>
+		      			<div className="col-md-6">
+		      				<h4><div id="grandtotal"></div></h4>
+	      				</div>
+	      				<div className="col-md-6">
+	      					<div className="col-md-offset-8 col-md-4">
+				      			<h4><button className="btn productpost" onClick={() => {this.updateProduct(this.state.data)}}>Update</button></h4>
+	      					</div>
+	      				</div>
 		      		</div>
-		      		<div className="row">
-		      			<button onClick={() => {this.updateProduct(this.state.data)}}>Update</button>
-		      		</div>
+      				<div className="row">
+      					<div className="col-md-12">
+	      					<div className="alert alert-success collapse">
+	      						<a href="#" className="close" data-hide="alert" aria-label="close">&times;</a>
+						  		<strong>Design products have been updated!</strong>
+							</div>
+						</div>
+					</div>
 		      		<div className="row">
 			      		<DescBox data={this.state.data} />
 			      	</div>
 		      		<div className="row" style={{marginTop: 1 + 'em'}}>
-			      		<button className="btn-lg">Submit pitch</button>
+			      		<button className="btn" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
 			      	</div>
 		      	</div>
 		      </div>
 	      </div>
 	    );
   	}
+});
+
+$(document).ready(function(){
+    $('button.productpost').click(function(){
+        $('.alert').show();
+    }) 
+});
+
+$(function(){
+    $("[data-hide]").on("click", function(){
+        $(this).closest("." + $(this).attr("data-hide")).hide();
+    });
 });
 
 var DesignTitle = React.createClass({
