@@ -4,7 +4,6 @@ var did = 3;
 // var design = data[did];
 
 var DesignView = React.createClass({
-	
 	loadDesignInfoFromServer: function() {
 	    $.ajax({
 	      url: this.props.url,
@@ -104,7 +103,7 @@ var ProductList = React.createClass({
 		}
 	    return (
 	      <div className="productList">
-	        <table className ="table table-hover table-inverse">
+	        <table className ="table">
 	        	<thead>
 				    <tr>
 				      <th>Product</th>
@@ -130,8 +129,7 @@ var Product = React.createClass({
 	      	<tr>
 	      		<td className="productName">
 					<select className="recommender" multiple="multiple">
-					  <option value="AL">Alabama</option>
-					  <option value="WY">Wyoming</option>
+						<Recommended category={this.props.category} />
 					</select>
 				</td>
 	      		<td className="productCategory">{this.props.category}</td>
@@ -140,6 +138,58 @@ var Product = React.createClass({
 	    );
   	}
 });
+
+var Recommended = React.createClass({
+	loadSimilarProducts: function() {
+		$.ajax({
+	      url: "https://api.builddirect.io/products/?query=" + this.props.category,
+	      headers: {
+	      	"Ocp-Apim-Subscription-Key": "f328d70c34574b408d3c8108fcae5ad9"
+		  },
+	      dataType: 'json',
+	      cache: false,
+	      success: function(data) {
+	        this.setState({data: data});
+	      }.bind(this),
+	      error: function(xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	  });
+	},
+	getInitialState: function() {
+	    return {data: []};
+	},
+	componentDidMount: function() {
+    this.loadSimilarProducts();
+    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
+  },
+	render: function() {
+		var productNodes;
+		console.log(this.state.data);
+		if (this.state.data.data != null) {
+			//TODO: POST new product to use
+			productNodes = this.state.data.data.products.map(function(product) {
+				return (
+					<RecommendedProduct key={product.skuNumber} name={product.title}>
+					</RecommendedProduct>
+				);
+			})
+		}
+		return (
+			<div className="recommendedProduct">
+				{productNodes}
+			</div>
+		);
+	}
+});
+
+var RecommendedProduct = React.createClass({
+	render: function() {
+		return (
+			<option>this.props.name</option>
+		);
+	}
+})
 
 var DescBox = React.createClass({
 	render: function() {
