@@ -1,13 +1,13 @@
 var userUrl = "/api/person/" + localStorage.pid;
 
 var Profile = React.createClass({
+  componentDidMount: function() {
+    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
+  },
   render: function() {
     return (
       <div>
-        <div className="headerMain">
-              <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
-              <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
-        </div>
+        
         <div className="commentBox">
           <ProfileInfo personjson={userUrl} />
           <ProfileTransactions transactionjson="/api/transaction" />

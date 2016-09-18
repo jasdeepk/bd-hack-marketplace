@@ -24,14 +24,11 @@ var DesignView = React.createClass({
 	componentDidMount: function() {
     this.loadDesignInfoFromServer();
     // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
+    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
   },
 	render: function() {
 	    return (
 	      <div className="designview">
-	      <div className="headerMain">
-            <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
-            <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
-          </div>
 		      <DesignTitle data={this.state.data[did]} />
 		      <div className="row">
 		      	<div className="col-md-6">

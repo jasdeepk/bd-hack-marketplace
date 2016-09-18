@@ -34,6 +34,7 @@ var Marketplace = React.createClass({
   componentDidMount: function() {
     this.loadDesignsFromServer();
     this.loadUserFromServer();
+    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
   },
   render: function() {
       var designs = this.state.designData.map(function(design) {
@@ -57,10 +58,6 @@ var Marketplace = React.createClass({
 
       return (
         <div>
-          <div className="headerMain">
-            <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
-            <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
-          </div>
           <div className="list-group">
             {designs}
           </div>
