@@ -21,10 +21,28 @@
                 "name": "Marbletiledirect CALACATTA VERDE CORNER SHELVES",
                 "category": "Shelves",
                 "quantity": "10"
+            },
+            {
+                "mid": "3",
+                "name": "Kohler Santa Rosa™ Compact Comfort Height® With AquaPiston®",
+                "category": "Toilet",
+                "quantity": "1"
+            },
+            {
+                "mid": "4",
+                "name": "Kesir Travertine Tile - Polished",
+                "category": "Shower",
+                "quantity": "20"
+            },
+            {
+                "mid": "5",
+                "name": "Marbletiledirect ITALIAN CALACATTA GOLD SINK",
+                "category": "Bathroom Sinks",
+                "quantity": "1"
             }
         ],
-        "sqrft": "20",
-        "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
+        "sqrft": "114",
+        "desc": "Looking to renovate my old washroom, I want to replace the flooring and shower tiles, but I recently replaced my shower door so I want to keep that.Specifically, I want laminate flooring and polished shower tiles. Also I want to install a new toilet that isn't too expensive, no more than $400. I also want a gold sink. I'm looking for a total material cost of under $1500 and a reasonable amount for a good contractor. Hoping to get the project done before the end of the year!"
     },
     {
         "did": "2",
@@ -39,9 +57,9 @@
         "materials": [
             {
                 "mid": "1",
-                "name": "Lamton Laminate - 12mm Russia Collection",
+                "name": "Lamton Laminate - 12mm Exotic Wide Plank Collection",
                 "category": "Flooring",
-                "quantity": "100"
+                "quantity": "236"
             },
             {
                 "mid": "2",
@@ -50,8 +68,8 @@
                 "quantity": "10"
             }
         ],
-        "sqrft": "20",
-        "desc": "This project is awesome! I want to hire someone to fix up my bedroom."
+        "sqrft": "236",
+        "desc": "Saw some very interesting looking minimalist bedrooms in a interior design magazine and decided to redo my bedroom. Looking for simple laminate flooring and a couple of shelves but not much more. Prefer to have the project completed between November and December. Looking for a decent contractor who isn't going to rip me off."
     },
     {
         "did": "3",
@@ -68,7 +86,7 @@
                 "mid": "1",
                 "name": "Bruceton Strip Hardwood Flooring - Unfinished Bruceton Strip",
                 "category": "Flooring",
-                "quantity": "100"
+                "quantity": "144"
             },
             {
                 "mid": "2",
@@ -77,8 +95,8 @@
                 "quantity": "10"
             }
         ],
-        "sqrft": "20",
-        "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
+        "sqrft": "144",
+        "desc": "I want a fresh look for my office. I'm looking for something simple, maybe some nice hardwood flooring and a couple of shelves. Very simple job and I'm in no rush to get it done quickly. Will hire the contractor that offers me the best rate in the next few months!"
     },
     {
         "did": "4",
@@ -93,18 +111,12 @@
         "materials": [
             {
                 "mid": "1",
-                "name": "Cabot Porcelain Tile - Redwood Series",
+                "name": "Evora Pallets Cork - Long Plank Terra Collection - Floating Floor",
                 "category": "Flooring",
-                "quantity": "100"
-            },
-            {
-                "mid": "2",
-                "name": "American Standard Champion® 4 Right Height® Two-Piece EverClean® Surface",
-                "category": "Toilet",
-                "quantity": "1"
+                "quantity": "64"
             }
         ],
-        "sqrft": "20",
-        "desc": "This project is awesome! I want to hire someone to fix up my garage."
+        "sqrft": "64",
+        "desc": "I want to redo the flooring for my garage so that I can turn it into a regular room. I was thinking of doing cork flooring because it seems unique. I live in Surrey and hopefully I want to find a contractor and get the project done before summer 2017."
     }
 ]
