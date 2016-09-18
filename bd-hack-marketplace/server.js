@@ -84,6 +84,33 @@ app.get('/api/transaction', function(req, res) {
   });
 });
 
+app.post('/api/transaction', function(req, res) {
+  fs.readFile(TRANSACTION_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    var transactions = JSON.parse(data);
+    console.log(transactions);
+    var newTransaction = {
+      tid: Date.now(),
+      pid: req.body.pid,
+      did: "1",
+      msg: req.body.msg,
+      rate: req.body.rate,
+      status: "pending",
+    };
+    transactions.push(newTransaction);
+    fs.writeFile(TRANSACTION_FILE, JSON.stringify(transactions, null, 4), function(err) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+      res.json(transactions);
+    });
+  });
+});
+
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
 });
