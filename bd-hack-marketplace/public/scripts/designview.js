@@ -119,8 +119,18 @@ var DesignTitle = React.createClass({
 	render: function() {
 		var title;
 		if (this.props.data != null) {
-			title = <h1 key={this.props.data.did}>{this.props.data.name}
-			</h1>
+			title = 
+				<div className="row">
+					<div className="col-md-12">
+						<h1 key={this.props.data.did}>{this.props.data.name}</h1>
+						<div className="row">
+							<div className="col-mid-offset-1 col-md-6">
+								<h5>Posted on: {this.props.data.postdate}</h5>
+								<h5>Work Period: {this.props.data.startdeadline} to {this.props.data.enddeadline}</h5>
+							</div>
+						</div>
+					</div>
+				</div>
 		}
 	    return (
 	      <div className="photoForm">

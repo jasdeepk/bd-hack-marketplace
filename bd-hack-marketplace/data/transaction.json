@@ -46,5 +46,37 @@
         "msg": "Since its a washroom, you should use tile for the flooring and not hardwood. Other than that the room seems good and I can start work anytime.",
         "rate": "1000",
         "status": "pending"
+    },
+    {
+        "tid": 1474194163869,
+        "pid": "3",
+        "did": "4",
+        "msg": "asdfasdfasdfasdf",
+        "rate": "asdfasdfasfasdf",
+        "status": "pending"
+    },
+    {
+        "tid": 1474199510387,
+        "pid": "5",
+        "did": "1",
+        "msg": "Hey I can do this",
+        "rate": "300",
+        "status": "pending"
+    },
+    {
+        "tid": 1474200737056,
+        "pid": "5",
+        "did": "1",
+        "msg": "I can do this",
+        "rate": "400",
+        "status": "pending"
+    },
+    {
+        "tid": 1474200966420,
+        "pid": "5",
+        "did": "1",
+        "msg": "I think I can do this",
+        "rate": "500",
+        "status": "pending"
     }
 ]
