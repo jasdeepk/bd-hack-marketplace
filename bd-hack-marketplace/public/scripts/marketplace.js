@@ -38,6 +38,8 @@ var Marketplace = React.createClass({
   },
   setSelectedDesign: function(design) {
     localStorage.selectedDesignId = design.did;
+    localStorage.selectedDesignName = design.name;
+    localStorage.selectedDesignImage = design.img;
   },
   render: function() {
     var that = this;

@@ -169,16 +169,19 @@ app.post('/api/transaction', function(req, res) {
       console.error(err);
       process.exit(1);
     }
+
     var transactions = JSON.parse(data);
-    console.log(transactions);
     var newTransaction = {
       tid: Date.now(),
       pid: req.body.pid,
       did: req.body.did,
       msg: req.body.msg,
       rate: req.body.rate,
+      name: req.body.name,
+      img: req.body.image,
       status: "pending",
     };
+    
     transactions.push(newTransaction);
     fs.writeFile(TRANSACTION_FILE, JSON.stringify(transactions, null, 4), function(err) {
       if (err) {
