@@ -1,5 +1,7 @@
 var designUrl = "/api/design/" + localStorage.selectedDesignId;
 
+var grandTotal = 0;
+
 var DesignView = React.createClass({
 	loadDesignInfoFromServer: function() {
 	    $.ajax({
@@ -38,6 +40,7 @@ var DesignView = React.createClass({
 		      	<div className="col-md-6">
 		      		<div className="row">
 		      			<ProductList data={this.state.data} />
+		      			<h3><div id="grandtotal"></div></h3>
 		      		</div>
 		      		<div className="row">
 			      		<DescBox data={this.state.data} />
@@ -91,10 +94,6 @@ var Photo = React.createClass({
 });
 
 var ProductList = React.createClass({
-	componentDidMount: function() {
-	    var total = $('select.recommender option:selected').length;
-		console.log(total);
-	},
 	render: function() {
 		// TODO: Need design to come from marketplace select
 		var productNodes;
@@ -223,10 +222,13 @@ ReactDOM.render(
 );	
 
 function updateTotal() {
-	// var total = $('select.recommender option:selected').each(function() ;
-	// console.log(total);
-};
+	$('select.recommender option:selected').each(function() {
+		grandTotal += parseInt($(this).val());
+		return grandTotal;
+	});
+	$("#grandtotal").append("<div>Total: $" + grandTotal.toFixed(2) + "</div>")
+}
 
 setTimeout(
   function() {updateTotal();
-  }, 1600);
+  }, 1500);
