@@ -26,10 +26,10 @@ var DesignView = React.createClass({
 	render: function() {
 	    return (
 	      <div className="designview">
-	      <div className="headerMain">
-            <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
-            <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
-          </div>
+		      <div className="headerMain">
+	            <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
+	            <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
+	          </div>
 		      <DesignTitle data={this.state.data} />
 		      <div className="row">
 		      	<div className="col-md-6">
@@ -130,7 +130,7 @@ var Product = React.createClass({
 	      	<tr>
 	      		<td className="productName">
 					<div className="recommendedProduct">
-						<Recommended key={this.props.mid} category={this.props.category} quantity={this.props.quantity}/>
+						<Recommended key={this.props.mid} name={this.props.name} category={this.props.category} quantity={this.props.quantity}/>
 					</div>
 				</td>
 	      		<td className="productCategory">{this.props.category}</td>
@@ -142,6 +142,7 @@ var Product = React.createClass({
 });
 
 var quantity;
+var name;
 var productTotal;
 
 var Recommended = React.createClass({
@@ -155,6 +156,7 @@ var Recommended = React.createClass({
 	      cache: false,
 	      success: function(data) {
 			quantity = this.props.quantity;
+			name = this.props.name;
 	        this.setState({data: data});
 	      }.bind(this),
 	      error: function(xhr, status, err) {
@@ -167,7 +169,7 @@ var Recommended = React.createClass({
 	},
 	componentDidMount: function() {
 	    this.loadSimilarProducts();
-	    $('.recommender').select2({ width: '100%' });
+	    $('.recommender').select2({ width: '25em'});
 	    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
   },
 	render: function() {
@@ -176,9 +178,16 @@ var Recommended = React.createClass({
 			//TODO: POST new product to use
 			productNodes = this.state.data.data.products.map(function(product) {
 				productTotal = (Number(product.price)*Number(quantity)).toFixed(2);
-				return (
-					<option value={productTotal}>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
-				);
+				if (name === product.title) {
+					return (
+						<option key={product.skuNumber} value={productTotal} selected>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
+					);
+				}
+				else {
+					return (
+						<option key={product.skuNumber} value={productTotal}>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
+					);
+				}
 			})
 		}
 		return (
@@ -231,4 +240,4 @@ function updateTotal() {
 
 setTimeout(
   function() {updateTotal();
-  }, 1500);
+  }, 2000);

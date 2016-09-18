@@ -10,12 +10,12 @@
     "location": "Vancouver, BC",
     "materials": [{
         "mid": "1",
-        "name": "carpet flooring",
+        "name": "Lamton Laminate - 12mm Exotic Wide Plank Collection",
         "category": "Flooring",
         "quantity": "100"
     }, {
         "mid": "2",
-        "name": "wood shelving",
+        "name": "Marbletiledirect CALACATTA VERDE CORNER SHELVES",
         "category": "Shelves",
         "quantity": "10"
     }],
@@ -33,12 +33,12 @@
     "location": "Richmond, BC",
     "materials": [{
         "mid": "1",
-        "name": "carpet flooring",
+        "name": "Lamton Laminate - 12mm Exotic Wide Plank Collection",
         "category": "Flooring",
         "quantity": "100"
     }, {
         "mid": "2",
-        "name": "wood shelving",
+        "name": "Marbletiledirect CALACATTA VERDE CORNER SHELVES",
         "category": "Shelves",
         "quantity": "10"
     }],
@@ -56,12 +56,12 @@
     "location": "Tssawasawasawassen, BC",
     "materials": [{
         "mid": "1",
-        "name": "carpet flooring",
+        "name": "Lamton Laminate - 12mm Exotic Wide Plank Collection",
         "category": "Flooring",
         "quantity": "100"
     }, {
         "mid": "2",
-        "name": "wood shelving",
+        "name": "Marbletiledirect CALACATTA VERDE CORNER SHELVES",
         "category": "Shelves",
         "quantity": "10"
     }],
@@ -79,12 +79,12 @@
     "location": "Surrey, BC",
     "materials": [{
         "mid": "1",
-        "name": "Carpet flooring",
+        "name": "Lamton Laminate - 12mm Exotic Wide Plank Collection",
         "category": "Flooring",
         "quantity": "100"
     }, {
         "mid": "2",
-        "name": "American Standard Toilet",
+        "name": "American Standard Cadet 3 Two-Piece Right Height\u2122",
         "category": "Toilet",
         "quantity": "1"
     }],
