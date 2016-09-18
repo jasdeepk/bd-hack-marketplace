@@ -1,81 +1,110 @@
-[{
-    "did": "1",
-    "name": "Modern Bathroom 114 Sqft",
-    "img": "imgs/3984510975.png",
-    "pid": "1",
-    "rooomtype": "Bathroom",
-    "startdeadline": "2016-10-28",
-    "enddeadline": "2016-12-23",
-    "postdate": "2016-09-17",
-    "location": "Vancouver, BC",
-    "materials": [{
-        "mid": "1",
-        "name": "carpet flooring"
-    }, {
-        "mid": "2",
-        "name": "wood shelving"
-    }],
-    "sqrft": "20",
-    "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
-}, {
-    "did": "2",
-    "name": "New bedroom, generic-chic!",
-    "img": "imgs/bedroom1_fs.jpg",
-    "pid": "1",
-    "rooomtype": "Bedroom",
-    "startdeadline": "2016-10-29",
-    "enddeadline": "2016-12-24",
-    "postdate": "2016-09-18",
-    "location": "Richmond, BC",
-    "materials": [{
-        "mid": "1",
-        "name": "carpet flooring"
-    }, {
-        "mid": "2",
-        "name": "wood shelving"
-    }],
-    "sqrft": "20",
-    "desc": "This project is awesome! I want to hire someone to fix up my bedroom."
-}, {
-    "did": "3",
-    "name": "Technophobe Office",
-    "img": "imgs/home_office_12x12ft.jpg",
-    "pid": "2",
-    "rooomtype": "Master Bedroom",
-    "startdeadline": "2016-11-28",
-    "enddeadline": "2017-01-23",
-    "postdate": "2016-10-11",
-    "location": "Tssawasawasawassen, BC",
-    "materials": [{
-        "mid": "1",
-        "name": "carpet flooring"
-    }, {
-        "mid": "2",
-        "name": "wood shelving"
-    }],
-    "sqrft": "20",
-    "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
-}, {
-    "did": "4",
-    "name": "Trumpet Room, for Trumpets Only",
-    "img": "imgs/trumpet.png",
-    "pid": "2",
-    "rooomtype": "Garage",
-    "startdeadline": "2016-03-28",
-    "enddeadline": "2017-06-24",
-    "postdate": "2016-02-17",
-    "location": "Surrey, BC",
-    "materials": [{
-        "mid": "1",
-        "name": "Carpet flooring",
-        "category": "Flooring",
-        "quantity": "100"
-    }, {
-        "mid": "2",
-        "name": "American Standard Toilet",
-        "category": "Toilet",
-        "quantity": "1"
-    }],
-    "sqrft": "20",
-    "desc": "This project is awesome! I want to hire someone to fix up my garage."
-}]
+[
+    {
+        "did": "1",
+        "name": "Modern Bathroom 114 Sqft",
+        "img": "imgs/3984510975.png",
+        "pid": "1",
+        "rooomtype": "Bathroom",
+        "startdeadline": "2016-10-28",
+        "enddeadline": "2016-12-23",
+        "postdate": "2016-09-17",
+        "location": "Vancouver, BC",
+        "materials": [
+            {
+                "mid": "1",
+                "name": "Lamton Laminate - 12mm Exotic Wide Plank Collection",
+                "category": "Flooring",
+                "quantity": "100"
+            },
+            {
+                "mid": "2",
+                "name": "Marbletiledirect CALACATTA VERDE CORNER SHELVES",
+                "category": "Shelves",
+                "quantity": "10"
+            }
+        ],
+        "sqrft": "20",
+        "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
+    },
+    {
+        "did": "2",
+        "name": "New bedroom, generic-chic!",
+        "img": "imgs/bedroom1_fs.jpg",
+        "pid": "1",
+        "rooomtype": "Bedroom",
+        "startdeadline": "2016-10-29",
+        "enddeadline": "2016-12-24",
+        "postdate": "2016-09-18",
+        "location": "Richmond, BC",
+        "materials": [
+            {
+                "mid": "1",
+                "name": "Lamton Laminate - 12mm Exotic Wide Plank Collection",
+                "category": "Flooring",
+                "quantity": "100"
+            },
+            {
+                "mid": "2",
+                "name": "Marbletiledirect CALACATTA VERDE CORNER SHELVES",
+                "category": "Shelves",
+                "quantity": "10"
+            }
+        ],
+        "sqrft": "20",
+        "desc": "This project is awesome! I want to hire someone to fix up my bedroom."
+    },
+    {
+        "did": "3",
+        "name": "Technophobe Office",
+        "img": "imgs/home_office_12x12ft.jpg",
+        "pid": "2",
+        "rooomtype": "Master Bedroom",
+        "startdeadline": "2016-11-28",
+        "enddeadline": "2017-01-23",
+        "postdate": "2016-10-11",
+        "location": "Tssawasawasawassen, BC",
+        "materials": [
+            {
+                "mid": "1",
+                "name": "Bruceton Strip Hardwood Flooring - Unfinished Bruceton Strip",
+                "category": "Flooring",
+                "quantity": "100"
+            },
+            {
+                "mid": "2",
+                "name": "Marbletiledirect CALACATTA VERDE CORNER SHELVES",
+                "category": "Shelves",
+                "quantity": "10"
+            }
+        ],
+        "sqrft": "20",
+        "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
+    },
+    {
+        "did": "4",
+        "name": "Trumpet Room, for Trumpets Only",
+        "img": "imgs/trumpet.png",
+        "pid": "2",
+        "rooomtype": "Garage",
+        "startdeadline": "2016-03-28",
+        "enddeadline": "2017-06-24",
+        "postdate": "2016-02-17",
+        "location": "Surrey, BC",
+        "materials": [
+            {
+                "mid": "1",
+                "name": "Lamton Laminate - 12mm Exotic Wide Plank Collection",
+                "category": "Flooring",
+                "quantity": "100"
+            },
+            {
+                "mid": "2",
+                "name": "American Standard Cadet 3 Two-Piece Right Height™",
+                "category": "Toilet",
+                "quantity": "1"
+            }
+        ],
+        "sqrft": "20",
+        "desc": "This project is awesome! I want to hire someone to fix up my garage."
+    }
+]

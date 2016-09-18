@@ -1,5 +1,15 @@
 var designUrl = "/api/design/" + localStorage.selectedDesignId;
 
+var grandTotal = 0;
+
+function updateTotal() {
+	$('select.recommender option:selected').each(function() {
+		grandTotal += parseInt($(this).val());
+		return grandTotal;
+	});
+	$("#grandtotal").append("<div>Total: $" + grandTotal.toFixed(2) + "</div>")
+}
+
 var DesignView = React.createClass({
 	loadDesignInfoFromServer: function() {
 	    $.ajax({
@@ -18,35 +28,91 @@ var DesignView = React.createClass({
 	    return {data: []};
 	},
 	componentDidMount: function() {
-    this.loadDesignInfoFromServer();
-    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
-    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
-  },
+	    this.loadDesignInfoFromServer();
+	    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
+	    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
+	  },
+  	updateProduct: function(data) {
+		var selectedMaterials = $('.recommender').find(":selected");
+		
+		var mids = data.materials.map(function(product) {
+			return product.mid;
+		})
+
+		var joinedMaterialsAndMids = [];
+		for (var i = selectedMaterials.length - 1; i >= 0; i--) {
+			var material = selectedMaterials[i].innerText.substr(0, selectedMaterials[i].innerText.indexOf('('));
+			joinedMaterialsAndMids.push({mid: mids[i], material:  material.trim()});
+		};
+
+		console.log(joinedMaterialsAndMids);
+		$.ajax({
+	      url: designUrl,
+	      dataType: 'json',
+	      type: 'PUT',
+      	  data: {joinedMaterialsAndMids:joinedMaterialsAndMids},
+	      cache: false,
+	      success: function(data) {
+	      },
+	      error: function(xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }
+	    });
+	},
 	render: function() {
 	    return (
 	      <div className="container designview">
+		      
 		      <DesignTitle data={this.state.data} />
 		      <div className="row">
 		      	<div className="col-md-6">
 		      		<div className="row">
 		      			<PhotoForm data={this.state.data}/>
 		      		</div>
-		      		<div className="row" style={{marginTop: 1 + 'em'}}>
-			      		<button className="btn-lg" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
-			      	</div>
 		      	</div>
 		      	<div className="col-md-6">
 		      		<div className="row">
 		      			<ProductList data={this.state.data} />
+		      			<div className="col-md-6">
+		      				<h4><div id="grandtotal"></div></h4>
+	      				</div>
+	      				<div className="col-md-6">
+	      					<div className="col-md-offset-8 col-md-4">
+				      			<h4><button className="btn productpost" onClick={() => {this.updateProduct(this.state.data)}}>Update</button></h4>
+	      					</div>
+	      				</div>
 		      		</div>
+      				<div className="row">
+      					<div className="col-md-12">
+	      					<div className="alert alert-success collapse">
+	      						<a href="#" className="close" data-hide="alert" aria-label="close">&times;</a>
+						  		<strong>Design products have been updated!</strong>
+							</div>
+						</div>
+					</div>
 		      		<div className="row">
 			      		<DescBox data={this.state.data} />
+			      	</div>
+		      		<div className="row" style={{marginTop: 1 + 'em'}}>
+			      		<button className="btn" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
 			      	</div>
 		      	</div>
 		      </div>
 	      </div>
 	    );
   	}
+});
+
+$(document).ready(function(){
+    $('button.productpost').click(function(){
+        $('.alert').show();
+    }) 
+});
+
+$(function(){
+    $("[data-hide]").on("click", function(){
+        $(this).closest("." + $(this).attr("data-hide")).hide();
+    });
 });
 
 var DesignTitle = React.createClass({
@@ -101,7 +167,7 @@ var ProductList = React.createClass({
 		}
 	    return (
 	      <div className="productList">
-	        <table className ="table table-hover table-inverse">
+	        <table className ="table">
 	        	<thead>
 				    <tr>
 				      <th>Product</th>
@@ -119,23 +185,76 @@ var ProductList = React.createClass({
 });
 
 var Product = React.createClass({
-	componentDidMount: function(){
-    	$('.recommender').select2({ width: '100%' });
-    },
 	render: function() {
 	    return (
 	      	<tr>
 	      		<td className="productName">
-					<select className="recommender" multiple="multiple">
-					  <option value="AL">Alabama</option>
-					  <option value="WY">Wyoming</option>
-					</select>
+					<div className="recommendedProduct">
+						<Recommended key={this.props.mid} name={this.props.name} category={this.props.category} quantity={this.props.quantity}/>
+					</div>
 				</td>
 	      		<td className="productCategory">{this.props.category}</td>
 	      		<td className="productQuantity">{this.props.quantity}</td>
 	      	</tr>
 	    );
   	}
+});
+
+var quantity;
+var name;
+var productTotal;
+
+var Recommended = React.createClass({
+	loadSimilarProducts: function() {
+		$.ajax({
+	      url: "https://api.builddirect.io/products/?query=" + this.props.category,
+	      headers: {
+	      	"Ocp-Apim-Subscription-Key": "f328d70c34574b408d3c8108fcae5ad9"
+		  },
+	      dataType: 'json',
+	      cache: false,
+	      success: function(data) {
+			quantity = this.props.quantity;
+			name = this.props.name;
+	        this.setState({data: data});
+	      }.bind(this),
+	      error: function(xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	  });
+	},
+	getInitialState: function() {
+	    return {data: []};
+	},
+	componentDidMount: function() {
+	    this.loadSimilarProducts();
+	    $('.recommender').select2({ width: '25em'});
+	    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
+  },
+	render: function() {
+		var productNodes;
+		if ((this.state.data.data != null) && (quantity != null)){
+			//TODO: POST new product to use
+			productNodes = this.state.data.data.products.map(function(product) {
+				productTotal = (Number(product.price)*Number(quantity)).toFixed(2);
+				if (name === product.title) {
+					return (
+						<option key={product.skuNumber} name={product.title} value={productTotal} selected>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
+					);
+				}
+				else {
+					return (
+						<option key={product.skuNumber} value={productTotal}>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
+					);
+				}
+			})
+		}
+		return (
+			<select className="recommender">
+				{productNodes}
+			</select>
+		);
+	}
 });
 
 var DescBox = React.createClass({
@@ -169,3 +288,8 @@ ReactDOM.render(
   <DesignView url={designUrl} pollInterval={2000}/>,
   document.getElementById('designview')
 );	
+
+
+setTimeout(
+  function() {updateTotal();
+  }, 2000);

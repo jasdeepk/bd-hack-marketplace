@@ -54,6 +54,41 @@ app.get('/api/design/:id', function(req, res) {
   });
 });
 
+// PUT Design Materials BY MID
+app.put('/api/design/:id', function(req, res) {
+  fs.readFile(DESIGNS_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+
+    var result = JSON.parse(data);
+
+    for (var i = result.length - 1; i >= 0; i--) 
+    {
+      if (result[i].did === req.params.id) 
+      {
+        for (var j = result[i].materials.length - 1; j >= 0; j--) 
+        {
+          for (var x = req.body.joinedMaterialsAndMids.length - 1; x >= 0; x--) {
+            if (result[i].materials[j].mid === req.body.joinedMaterialsAndMids[x].mid) 
+            {
+              result[i].materials[j].name = req.body.joinedMaterialsAndMids[x].material;
+            }
+          };   
+        };
+      }
+    };
+    fs.writeFile(DESIGNS_FILE, JSON.stringify(result, null, 4), function(err) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+      res.json(result);
+    });
+  });
+});
+
 // GET Person BY PID
 app.get('/api/person/:id', function(req, res) {
   fs.readFile(PERSON_FILE, function(err, data) {
