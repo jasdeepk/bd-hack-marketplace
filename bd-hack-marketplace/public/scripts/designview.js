@@ -21,6 +21,32 @@ var DesignView = React.createClass({
     	this.loadDesignInfoFromServer();
     	// setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
   },
+  	updateProduct: function(data) {
+		var selectedMaterials = $('.recommender').find(":selected");
+		
+		var mids = data.materials.map(function(product) {
+			return product.mid;
+		})
+
+		var joinedMaterialsAndMids = [];
+		for (var i = selectedMaterials.length - 1; i >= 0; i--) {
+			joinedMaterialsAndMids.push({mid: mids[i], material: selectedMaterials[i].innerText.substr(0, selectedMaterials[i].innerText.indexOf('(')) });
+		};
+
+		console.log(joinedMaterialsAndMids);
+		$.ajax({
+	      url: designUrl,
+	      dataType: 'json',
+	      type: 'PUT',
+      	  data: {joinedMaterialsAndMids:joinedMaterialsAndMids},
+	      cache: false,
+	      success: function(data) {
+	      },
+	      error: function(xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }
+	    });
+	},
 	render: function() {
 	    return (
 	      <div className="designview">
@@ -38,6 +64,9 @@ var DesignView = React.createClass({
 		      	<div className="col-md-6">
 		      		<div className="row">
 		      			<ProductList data={this.state.data} />
+		      		</div>
+		      		<div className="row">
+		      			<button onClick={() => {this.updateProduct(this.state.data)}}>Update</button>
 		      		</div>
 		      		<div className="row">
 			      		<DescBox data={this.state.data} />
@@ -136,7 +165,6 @@ var Product = React.createClass({
 				</td>
 	      		<td className="productCategory">{this.props.category}</td>
 	      		<td className="productQuantity">{this.props.quantity}</td>
-	      		<td><button onClick={updateTotal}>Button</button></td>
 	      	</tr>
 	    );
   	}
@@ -178,7 +206,7 @@ var Recommended = React.createClass({
 			productNodes = this.state.data.data.products.map(function(product) {
 				productTotal = (Number(product.price)*Number(quantity)).toFixed(2);
 				return (
-					<option value={productTotal}>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
+					<option value={productTotal} key={product.skuNumber}>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
 				);
 			})
 		}
