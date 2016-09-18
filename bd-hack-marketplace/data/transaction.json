@@ -46,25 +46,5 @@
         "msg": "Since its a washroom, you should use tile for the flooring and not hardwood. Other than that the room seems good and I can start work anytime.",
         "rate": "1000",
         "status": "pending"
-    },
-    {
-        "tid": 1474194163869,
-        "pid": "3",
-        "did": "4",
-        "msg": "Looks good!",
-        "rate": "500",
-        "status": "pending",
-        "name": "Trumpet Room, for Trumpets Only",
-        "img": "imgs/trumpet.png"
-    },
-    {
-        "tid": 1474201648998,
-        "pid": "3",
-        "did": "2",
-        "msg": "sdaf",
-        "rate": "asdf",
-        "name": "New bedroom, generic-chic!",
-        "img": "imgs/bedroom1_fs.jpg",
-        "status": "pending"
     }
 ]
