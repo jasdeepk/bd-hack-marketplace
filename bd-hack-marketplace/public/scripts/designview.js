@@ -93,8 +93,11 @@ var Photo = React.createClass({
   	}
 });
 
-
 var ProductList = React.createClass({
+	componentDidMount: function() {
+	    var total = $('select.recommender option:selected').length;
+		console.log(total);
+	},
 	render: function() {
 		// TODO: Need design to come from marketplace select
 		var productNodes;
@@ -136,6 +139,7 @@ var Product = React.createClass({
 				</td>
 	      		<td className="productCategory">{this.props.category}</td>
 	      		<td className="productQuantity">{this.props.quantity}</td>
+	      		<td><button onClick={updateTotal}>Button</button></td>
 	      	</tr>
 	    );
   	}
@@ -220,3 +224,12 @@ ReactDOM.render(
   <DesignView url="/api/design" pollInterval={2000}/>,
   document.getElementById('designview')
 );	
+
+function updateTotal() {
+	var total = $('select.recommender option:selected').each(function() ;
+	console.log(total);
+};
+
+setTimeout(
+  function() {updateTotal();
+  }, 1600);
