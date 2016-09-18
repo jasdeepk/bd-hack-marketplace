@@ -121,16 +121,13 @@ var ProductList = React.createClass({
 });
 
 var Product = React.createClass({
-	componentDidMount: function(){
-    	$('.recommender').select2({ width: '100%' });
-    },
 	render: function() {
 	    return (
 	      	<tr>
 	      		<td className="productName">
-					<select className="recommender" multiple="multiple">
-						<Recommended category={this.props.category} />
-					</select>
+					<div className="recommendedProduct">
+						<Recommended key={this.props.mid} category={this.props.category} />
+					</div>
 				</td>
 	      		<td className="productCategory">{this.props.category}</td>
 	      		<td className="productQuantity">{this.props.quantity}</td>
@@ -161,35 +158,28 @@ var Recommended = React.createClass({
 	},
 	componentDidMount: function() {
     this.loadSimilarProducts();
+    $('.recommender').select2({ width: '100%' });
     // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
   },
 	render: function() {
 		var productNodes;
-		console.log(this.state.data);
 		if (this.state.data.data != null) {
 			//TODO: POST new product to use
 			productNodes = this.state.data.data.products.map(function(product) {
 				return (
-					<RecommendedProduct key={product.skuNumber} name={product.title}>
-					</RecommendedProduct>
+					<option>{product.title}</option>
+					// <RecommendedProduct key={product.skuNumber} name={product.title}>
+					// </RecommendedProduct>
 				);
 			})
 		}
 		return (
-			<div className="recommendedProduct">
+			<select className="recommender" multiple="multiple">
 				{productNodes}
-			</div>
+			</select>
 		);
 	}
 });
-
-var RecommendedProduct = React.createClass({
-	render: function() {
-		return (
-			<option>this.props.name</option>
-		);
-	}
-})
 
 var DescBox = React.createClass({
 	render: function() {
