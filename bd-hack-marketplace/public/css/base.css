@@ -94,3 +94,7 @@ ul {
 .loginmodal-container {
   margin-left: 75%!important;
 }
+
+.container {
+  background-color: white;
+}
