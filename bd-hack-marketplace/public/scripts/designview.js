@@ -40,7 +40,8 @@ var DesignView = React.createClass({
 
 		var joinedMaterialsAndMids = [];
 		for (var i = selectedMaterials.length - 1; i >= 0; i--) {
-			joinedMaterialsAndMids.push({mid: mids[i], material: selectedMaterials[i].innerText.substr(0, selectedMaterials[i].innerText.indexOf('(')) });
+			var material = selectedMaterials[i].innerText.substr(0, selectedMaterials[i].innerText.indexOf('('));
+			joinedMaterialsAndMids.push({mid: mids[i], material:  material.trim()});
 		};
 
 		console.log(joinedMaterialsAndMids);
