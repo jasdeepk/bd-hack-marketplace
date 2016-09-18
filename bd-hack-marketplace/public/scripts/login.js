@@ -34,6 +34,7 @@ var Login = React.createClass({
             this.setState({loggedin: !this.state.loggedin});
             localStorage.name = data[i].name;
             localStorage.pid = data[i].pid;
+            localStorage.img = data[i].img;
             window.location = "marketplace.html";
           }
         }
