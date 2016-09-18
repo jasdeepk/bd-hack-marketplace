@@ -54,7 +54,7 @@ var ProfileInfo = React.createClass({
           {this.state.personName}
         </h2>
         <div className="media-left">
-          <img className="media-object" src={this.state.personImg} width="200" height="200"></img>
+          <img className="media-object img-circle" src={this.state.personImg} width="200" height="200"></img>
         </div>
         <h3 className="personDesc">
           {this.state.personDesc}
