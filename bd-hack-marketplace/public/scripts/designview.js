@@ -32,7 +32,7 @@ var DesignView = React.createClass({
 		      			<PhotoForm data={this.state.data}/>
 		      		</div>
 		      		<div className="row" style={{marginTop: 1 + 'em'}}>
-			      		<button className="btn-lg">Submit pitch</button>
+			      		<button className="btn-lg" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
 			      	</div>
 		      	</div>
 		      	<div className="col-md-6">
