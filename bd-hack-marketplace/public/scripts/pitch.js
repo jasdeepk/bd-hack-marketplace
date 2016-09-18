@@ -58,7 +58,7 @@ var Pitch = React.createClass({
 	render:function() {
 		var ddata = this.state.designData[1];
 		return (	
-			 <div>
+			 <div className="pitchDiv">
 			 	<li className="list-group-item" key={this.state.designData.did}>
             		<div className="media">
               		<div className="media-left">
@@ -102,21 +102,25 @@ var CommentForm = React.createClass({
   },
   render: function() {
     return (
+      <div className="commentDiv">
       <form className="commentForm" onSubmit={this.handleSubmit}>
         <input
+          className="msgBox"
           type="text"
           placeholder="Enter your suggested changes"
           value={this.state.msg}
           onChange={this.handleMsgChange}
-        />
+        /> <br />
         <input
+          className="rateBox"
           type="text"
           placeholder="rate"
           value={this.state.rate}
           onChange={this.handleRateChange}
         />
-        <input type="submit" onClick={this.handleSubmit} value="Post" />
+        <input className="test" type="submit" onClick={this.handleSubmit} value="Post" />
       </form>
+      </div>
     );
   }
 });
