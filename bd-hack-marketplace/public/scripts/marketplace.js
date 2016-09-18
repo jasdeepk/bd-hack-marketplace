@@ -37,7 +37,7 @@ var Marketplace = React.createClass({
   render: function() {
       var designs = this.state.designData.map(function(design) {
         return (
-          <li className="list-group-item" key={design.did}>
+          <a href="#" className="list-group-item" key={design.did}>
             <div className="media">
               <div className="media-left">
                 <img className="media-object" src={design.img} width="200" height="200"></img>
@@ -50,16 +50,16 @@ var Marketplace = React.createClass({
                 <h4 className="media-heading">{design.sqrft} Sqft</h4>
               </div>
             </div>
-          </li>
+          </a>
         );
       });
 
       return (
         <div>
           <h2> {this.state.userData.name} </h2>
-          <ul className="list-group">
+          <div className="list-group">
             {designs}
-          </ul>
+          </div>
         </div>
       );
   }
