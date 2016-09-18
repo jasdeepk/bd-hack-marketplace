@@ -28,9 +28,10 @@ var DesignView = React.createClass({
 	    return {data: []};
 	},
 	componentDidMount: function() {
-    	this.loadDesignInfoFromServer();
-    	// setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
-  },
+	    this.loadDesignInfoFromServer();
+	    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
+	    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
+	  },
   	updateProduct: function(data) {
 		var selectedMaterials = $('.recommender').find(":selected");
 		
@@ -60,7 +61,7 @@ var DesignView = React.createClass({
 	},
 	render: function() {
 	    return (
-	      <div className="designview">
+	      <div className="container designview">
 		      <div className="headerMain">
 	            <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
 	            <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
@@ -71,6 +72,9 @@ var DesignView = React.createClass({
 		      		<div className="row">
 		      			<PhotoForm data={this.state.data}/>
 		      		</div>
+		      		<div className="row" style={{marginTop: 1 + 'em'}}>
+			      		<button className="btn-lg" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
+			      	</div>
 		      	</div>
 		      	<div className="col-md-6">
 		      		<div className="row">

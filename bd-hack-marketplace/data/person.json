@@ -3,7 +3,7 @@
     "name": "Luke Skywalker",
     "user": "lukeskywalker@starwars.com",
     "pass": "password",
-    "img": "imgs/person-default.png",
+    "img": "imgs/luke-contractor-pic.jpg",
     "desc": "Hi I'm Luke Skywalker! I love the force and my dad definitely is NOT the dark lord of the Sith!",
     "priviledge": "DESIGNER"
 }, {
@@ -11,7 +11,7 @@
     "name": "Darth Vader",
     "user": "darthvader@starwars.com",
     "pass": "password",
-    "img": "imgs/person-default.png",
+    "img": "imgs/vader-contractor-pic.jpg",
     "desc": "Hi I'm Darth Vader! I'm a master of the force, a deadbeat dad and all around great guy!",
     "priviledge": "DESIGNER"
 }, {
@@ -19,7 +19,7 @@
     "name": "Han Solo",
     "user": "hansolo@starwars.com",
     "pass": "password",
-    "img": "imgs/person-default.png",
+    "img": "imgs/han-contractor-pic.jpg",
     "desc": "Hi I'm Han Solo. I shot first.",
     "priviledge": "CONTRACTOR"
 }, {
@@ -27,7 +27,7 @@
     "name": "Kylo Ren",
     "user": "kyloren@starwars.com",
     "pass": "password",
-    "img": "imgs/person-default.png",
+    "img": "imgs/kylo-contractor-pic.jpg",
     "desc": "Hi I'm Kylo Ren! My dad sucks and I have teenage angst!",
     "priviledge": "CONTRACTOR"
 },

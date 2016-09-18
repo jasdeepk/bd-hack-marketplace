@@ -1,0 +1,23 @@
+.pitchDiv{
+	width:80%;
+	height:100%;
+	left:10%;
+	position:relative;
+}
+.msgBox{
+	width:500px;
+	height:200px;
+	margin-top:10px;
+}
+.rateBox{
+	margin-top:10px;
+}
+.commentDiv{
+	width: 80%;
+	height:100%;
+	left:0%;
+	position:relative;
+}
+.list-group-item{
+	background-color:#AA0000;
+}

@@ -5,7 +5,8 @@ var Pitch = React.createClass({
       		dataType: 'json',
       		cache: false,
       		success: function(data) {
-        	this.setState({designData: data[1]});
+        	this.setState({designData: data[parseInt(localStorage.selectedDesignId)-1]});
+          console.log(parseInt(localStorage.selectedDesignId));
       		}.bind(this),
       		
       		error: function(xhr, status, err) {
@@ -54,11 +55,12 @@ var Pitch = React.createClass({
 	componentDidMount: function() {
 		this.loadDesignsFromServer();
     this.loadTransactionsFromServer();
+    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
 	},
 	render:function() {
-		var ddata = this.state.designData[1];
+
 		return (	
-			 <div>
+			 <div className="pitchDiv">
 			 	<li className="list-group-item" key={this.state.designData.did}>
             		<div className="media">
               		<div className="media-left">
@@ -94,34 +96,39 @@ var CommentForm = React.createClass({
     var msg = this.state.msg.trim();
     var rate = this.state.rate.trim();
     var pid = localStorage.pid;
+    var did = localStorage.selectedDesignId;
     if (!rate || !msg) {
       return;
     }
-    this.props.onCommentSubmit({msg: msg, rate: rate, pid: pid});
+    this.props.onCommentSubmit({msg: msg, rate: rate, pid: pid, did:did});
     this.setState({msg: '', rate: ''});
   },
   render: function() {
     return (
+      <div className="commentDiv">
       <form className="commentForm" onSubmit={this.handleSubmit}>
         <input
+          className="msgBox"
           type="text"
           placeholder="Enter your suggested changes"
           value={this.state.msg}
           onChange={this.handleMsgChange}
-        />
+        /> <br />
         <input
+          className="rateBox"
           type="text"
-          placeholder="rate"
+          placeholder="Charge rate"
           value={this.state.rate}
           onChange={this.handleRateChange}
         />
-        <input type="submit" onClick={this.handleSubmit} value="Post" />
+        <input className="test" type="submit" onClick={this.handleSubmit} value="Post" />
       </form>
+      </div>
     );
   }
 });
 
 ReactDOM.render(
-	<Pitch designUrl="/api/design" transactionUrl="/api/transaction" />, 
+	<Pitch designUrl="/api/design/" transactionUrl="/api/transaction" />, 
 	document.getElementById('pitch')
 );
