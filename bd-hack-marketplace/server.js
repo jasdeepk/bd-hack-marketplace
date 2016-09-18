@@ -38,12 +38,14 @@ app.get('/api/design', function(req, res) {
   });
 });
 
-// GET Person
-app.get('/api/person/id', function(req, res) {
+// GET Person BY PID
+app.get('/api/person/:id', function(req, res) {
   fs.readFile(PERSON_FILE, function(err, data) {
     var result = JSON.parse(data);
     for (var i = result.length - 1; i >= 0; i--) {
-      if (result[i].pid === "5") {
+      console.log("hi");
+      if (result[i].pid === req.params.id) {
+        console.log("hey");
         res.json(result[i]);
       }
     };

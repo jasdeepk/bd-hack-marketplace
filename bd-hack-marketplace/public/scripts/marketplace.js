@@ -1,3 +1,5 @@
+var userUrl = "/api/person/" + localStorage.pid;
+
 var Marketplace = React.createClass({
 
   loadUserFromServer: function() {
@@ -66,6 +68,6 @@ var Marketplace = React.createClass({
 });
 
 ReactDOM.render(
-  <Marketplace designsUrl="/api/design" userUrls="/api/person/id" pollInterval={2000} />,
+  <Marketplace designsUrl="/api/design" userUrls={userUrl} pollInterval={2000} />,
   document.getElementById('marketplace')
 );

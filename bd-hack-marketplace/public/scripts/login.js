@@ -1,4 +1,4 @@
-var contractor_pid = "0";
+// var contractor_pid = "0";
 var Login = React.createClass({
   getInitialState: function() {
     return {login: true, username: '', password: ''};
@@ -24,7 +24,9 @@ var Login = React.createClass({
         for(var i =  0; i < data.length; i++) {
           if(data[i] && data[i].user === this.state.username && data[i].pass === this.state.password) {
             // set session variable
-            contractor_pid = data[i].pid;
+            // contractor_pid = data[i].pid;
+            localStorage.pid = data[i].pid;
+            window.location = "marketplace.html";
           }
         }
       }.bind(this),
