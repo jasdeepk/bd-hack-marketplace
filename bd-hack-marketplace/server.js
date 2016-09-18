@@ -38,6 +38,22 @@ app.get('/api/design', function(req, res) {
   });
 });
 
+// GET Designs BY DID
+app.get('/api/design/:id', function(req, res) {
+  fs.readFile(DESIGNS_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    var result = JSON.parse(data);
+    for (var i = result.length - 1; i >= 0; i--) {
+      if (result[i].did === req.params.id) {
+        res.json(result[i]);
+      }
+    };
+  });
+});
+
 // GET Person BY PID
 app.get('/api/person/:id', function(req, res) {
   fs.readFile(PERSON_FILE, function(err, data) {
