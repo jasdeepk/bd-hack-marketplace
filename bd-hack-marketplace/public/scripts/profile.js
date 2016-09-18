@@ -3,13 +3,12 @@ var reviewUrl = "/api/personReviews/" + localStorage.pid;
 var transactionUrl = "/api/personTransactions/" + localStorage.pid;
 
 var Profile = React.createClass({
+  componentDidMount: function() {
+    document.getElementById("headerName").innerHTML = localStorage.getItem("name");
+  },
   render: function() {
     return (
       <div>
-        <div className="headerMain">
-              <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
-              <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
-        </div>
         <div className="profile">
         <div className="col-md-8">
           <ProfileInfo personjson={userUrl} />
