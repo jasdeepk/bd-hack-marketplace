@@ -66,6 +66,6 @@ var Marketplace = React.createClass({
 });
 
 ReactDOM.render(
-  <Marketplace designsUrl="/api/design" userUrls="/api/user/id" pollInterval={2000} />,
+  <Marketplace designsUrl="/api/design" userUrls="/api/person/id" pollInterval={2000} />,
   document.getElementById('marketplace')
 );

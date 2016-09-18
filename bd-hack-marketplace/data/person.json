@@ -1,47 +1,42 @@
-[
-    {
-        "pid": "1",
-        "name": "Luke Skywalker",
-        "user": "lukeskywalker@starwars.com",
-        "pass": "password",
-        "img": "picture/url/here",
-        "desc": "Hi I'm Luke Skywalker! I love the force and my dad definitely is NOT the dark lord of the Sith!",
-        "priviledge": "DESIGNER"
-    },
-    {
-        "pid": "2",
-        "name": "Darth Vader",
-        "user": "darthvader@starwars.com",
-        "pass": "password",
-        "img": "picture/url/here",
-        "desc": "Hi I'm Darth Vader! I'm a master of the force, a deadbeat dad and all around great guy!",
-        "priviledge": "DESIGNER"
-    },
-    {
-        "pid": "3",
-        "name": "Han Solo",
-        "user": "hansolo@starwars.com",
-        "pass": "password",
-        "img": "picture/url/here",
-        "desc": "Hi I'm Han Solo. I shot first.",
-        "priviledge": "CONTRACTOR"
-    },
-    {
-        "pid": "4",
-        "name": "Kylo Ren",
-        "user": "kyloren@starwars.com",
-        "pass": "password",
-        "img": "picture/url/here",
-        "desc": "Hi I'm Kylo Ren! My dad sucks and I have teenage angst!",
-        "priviledge": "CONTRACTOR"
-    },
-    {
-        "pid": "5",
-        "name": "Rey",
-        "user": "rey@starwars.com",
-        "pass": "password",
-        "img": "imgs/rey-contractor-pic.jpg",
-        "desc": "Hi I'm Rey! I'm for sure not a skywalker/solo kid, I swear.",
-        "priviledge": "CONTRACTOR"
-    }
-]
+[{
+    "pid": "1",
+    "name": "Luke Skywalker",
+    "user": "lukeskywalker@starwars.com",
+    "pass": "password",
+    "img": "picture/url/here",
+    "desc": "Hi I'm Luke Skywalker! I love the force and my dad definitely is NOT the dark lord of the Sith!",
+    "priviledge": "DESIGNER"
+}, {
+    "pid": "2",
+    "name": "Darth Vader",
+    "user": "darthvader@starwars.com",
+    "pass": "password",
+    "img": "picture/url/here",
+    "desc": "Hi I'm Darth Vader! I'm a master of the force, a deadbeat dad and all around great guy!",
+    "priviledge": "DESIGNER"
+}, {
+    "pid": "3",
+    "name": "Han Solo",
+    "user": "hansolo@starwars.com",
+    "pass": "password",
+    "img": "picture/url/here",
+    "desc": "Hi I'm Han Solo. I shot first.",
+    "priviledge": "CONTRACTOR"
+}, {
+    "pid": "4",
+    "name": "Kylo Ren",
+    "user": "kyloren@starwars.com",
+    "pass": "password",
+    "img": "picture/url/here",
+    "desc": "Hi I'm Kylo Ren! My dad sucks and I have teenage angst!",
+    "priviledge": "CONTRACTOR"
+},
+{
+    "pid": "5",
+    "name": "Rey",
+    "user": "rey@starwars.com",
+    "pass": "password",
+    "img": "imgs/rey-contractor-pic.jpg",
+    "desc": "Hi I'm Rey! I'm for sure not a skywalker/solo kid, I swear.",
+    "priviledge": "CONTRACTOR"
+}]
