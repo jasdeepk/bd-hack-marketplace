@@ -36,10 +36,14 @@ var Marketplace = React.createClass({
     this.loadUserFromServer();
     document.getElementById("headerName").innerHTML = localStorage.getItem("name");
   },
+  setSelectedDesign: function(design) {
+    localStorage.selectedDesignId = design.did;
+  },
   render: function() {
+    var that = this;
       var designs = this.state.designData.map(function(design) {
         return (
-          <a href="design_detail.html" className="list-group-item" key={design.did}>
+          <a href="design_detail.html" className="list-group-item" key={design.did} onClick={() => { that.setSelectedDesign(design) }} >
             <div className="media">
               <div className="media-left">
                 <img className="media-object" src={design.img} width="200" height="200"></img>

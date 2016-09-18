@@ -38,6 +38,22 @@ app.get('/api/design', function(req, res) {
   });
 });
 
+// GET Designs BY DID
+app.get('/api/design/:id', function(req, res) {
+  fs.readFile(DESIGNS_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    var result = JSON.parse(data);
+    for (var i = result.length - 1; i >= 0; i--) {
+      if (result[i].did === req.params.id) {
+        res.json(result[i]);
+      }
+    };
+  });
+});
+
 // GET Person BY PID
 app.get('/api/person/:id', function(req, res) {
   fs.readFile(PERSON_FILE, function(err, data) {
@@ -81,6 +97,33 @@ app.get('/api/transaction', function(req, res) {
       process.exit(1);
     }
     res.json(JSON.parse(data));
+  });
+});
+
+app.post('/api/transaction', function(req, res) {
+  fs.readFile(TRANSACTION_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    var transactions = JSON.parse(data);
+    console.log(transactions);
+    var newTransaction = {
+      tid: Date.now(),
+      pid: req.body.pid,
+      did: "1",
+      msg: req.body.msg,
+      rate: req.body.rate,
+      status: "pending",
+    };
+    transactions.push(newTransaction);
+    fs.writeFile(TRANSACTION_FILE, JSON.stringify(transactions, null, 4), function(err) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+      res.json(transactions);
+    });
   });
 });
 
