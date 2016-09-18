@@ -21,8 +21,8 @@ var DesignView = React.createClass({
 	    return {data: []};
 	},
 	componentDidMount: function() {
-    this.loadDesignInfoFromServer();
-    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
+    	this.loadDesignInfoFromServer();
+    	// setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
   },
 	render: function() {
 	    return (
@@ -37,9 +37,6 @@ var DesignView = React.createClass({
 		      		<div className="row">
 		      			<PhotoForm data={this.state.data[did]}/>
 		      		</div>
-		      		<div className="row" style={{marginTop: 1 + 'em'}}>
-			      		<button className="btn-lg">Submit pitch</button>
-			      	</div>
 		      	</div>
 		      	<div className="col-md-6">
 		      		<div className="row">
@@ -47,6 +44,9 @@ var DesignView = React.createClass({
 		      		</div>
 		      		<div className="row">
 			      		<DescBox data={this.state.data[did]} />
+			      	</div>
+		      		<div className="row" style={{marginTop: 1 + 'em'}}>
+			      		<button className="btn-lg">Submit pitch</button>
 			      	</div>
 		      	</div>
 		      </div>
@@ -93,6 +93,7 @@ var Photo = React.createClass({
   	}
 });
 
+
 var ProductList = React.createClass({
 	render: function() {
 		// TODO: Need design to come from marketplace select
@@ -130,7 +131,7 @@ var Product = React.createClass({
 	      	<tr>
 	      		<td className="productName">
 					<div className="recommendedProduct">
-						<Recommended key={this.props.mid} category={this.props.category} />
+						<Recommended key={this.props.mid} category={this.props.category} quantity={this.props.quantity}/>
 					</div>
 				</td>
 	      		<td className="productCategory">{this.props.category}</td>
@@ -139,6 +140,9 @@ var Product = React.createClass({
 	    );
   	}
 });
+
+var quantity;
+var productTotal;
 
 var Recommended = React.createClass({
 	loadSimilarProducts: function() {
@@ -150,6 +154,7 @@ var Recommended = React.createClass({
 	      dataType: 'json',
 	      cache: false,
 	      success: function(data) {
+			quantity = this.props.quantity;
 	        this.setState({data: data});
 	      }.bind(this),
 	      error: function(xhr, status, err) {
@@ -161,24 +166,23 @@ var Recommended = React.createClass({
 	    return {data: []};
 	},
 	componentDidMount: function() {
-    this.loadSimilarProducts();
-    $('.recommender').select2({ width: '100%' });
-    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
+	    this.loadSimilarProducts();
+	    $('.recommender').select2({ width: '100%' });
+	    // setInterval(this.loadDesignInfoFromServer, this.props.pollInterval);
   },
 	render: function() {
 		var productNodes;
-		if (this.state.data.data != null) {
+		if ((this.state.data.data != null) && (quantity != null)){
 			//TODO: POST new product to use
 			productNodes = this.state.data.data.products.map(function(product) {
+				productTotal = (Number(product.price)*Number(quantity)).toFixed(2);
 				return (
-					<option>{product.title}</option>
-					// <RecommendedProduct key={product.skuNumber} name={product.title}>
-					// </RecommendedProduct>
+					<option value={productTotal}>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
 				);
 			})
 		}
 		return (
-			<select className="recommender" multiple="multiple">
+			<select className="recommender">
 				{productNodes}
 			</select>
 		);
