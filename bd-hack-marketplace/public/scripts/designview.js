@@ -1,10 +1,6 @@
-
-// TODO: Needs to be from contractor click on marketplace
-var did = 3;
-// var design = data[did];
+var designUrl = "/api/design/" + localStorage.selectedDesignId;
 
 var DesignView = React.createClass({
-	
 	loadDesignInfoFromServer: function() {
 	    $.ajax({
 	      url: this.props.url,
@@ -32,11 +28,11 @@ var DesignView = React.createClass({
             <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
             <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
           </div>
-		      <DesignTitle data={this.state.data[did]} />
+		      <DesignTitle data={this.state.data} />
 		      <div className="row">
 		      	<div className="col-md-6">
 		      		<div className="row">
-		      			<PhotoForm data={this.state.data[did]}/>
+		      			<PhotoForm data={this.state.data}/>
 		      		</div>
 		      		<div className="row" style={{marginTop: 1 + 'em'}}>
 			      		<button className="btn-lg">Submit pitch</button>
@@ -44,10 +40,10 @@ var DesignView = React.createClass({
 		      	</div>
 		      	<div className="col-md-6">
 		      		<div className="row">
-		      			<ProductList data={this.state.data[did]} />
+		      			<ProductList data={this.state.data} />
 		      		</div>
 		      		<div className="row">
-			      		<DescBox data={this.state.data[did]} />
+			      		<DescBox data={this.state.data} />
 			      	</div>
 		      	</div>
 		      </div>
@@ -98,7 +94,7 @@ var ProductList = React.createClass({
 	render: function() {
 		// TODO: Need design to come from marketplace select
 		var productNodes;
-		if (this.props.data != null) {
+		if (this.props.data != null && this.props.data.materials) {
 			productNodes = this.props.data.materials.map(function(product) {
 				return (
 					<Product key={product.mid} category={product.category} quantity={product.quantity} name={product.name}>
@@ -173,6 +169,6 @@ var Desc = React.createClass({
 
 ReactDOM.render(
   // <DesignView data={design}/>,
-  <DesignView url="/api/design" pollInterval={2000}/>,
+  <DesignView url={designUrl} pollInterval={2000}/>,
   document.getElementById('designview')
 );	
