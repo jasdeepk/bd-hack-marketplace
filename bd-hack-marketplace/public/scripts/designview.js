@@ -223,8 +223,8 @@ ReactDOM.render(
 );	
 
 function updateTotal() {
-	var total = $('select.recommender option:selected').each(function() ;
-	console.log(total);
+	// var total = $('select.recommender option:selected').each(function() ;
+	// console.log(total);
 };
 
 setTimeout(

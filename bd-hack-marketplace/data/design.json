@@ -10,10 +10,14 @@
     "location": "Vancouver, BC",
     "materials": [{
         "mid": "1",
-        "name": "carpet flooring"
+        "name": "carpet flooring",
+        "category": "Flooring",
+        "quantity": "100"
     }, {
         "mid": "2",
-        "name": "wood shelving"
+        "name": "wood shelving",
+        "category": "Shelves",
+        "quantity": "10"
     }],
     "sqrft": "20",
     "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
@@ -29,10 +33,14 @@
     "location": "Richmond, BC",
     "materials": [{
         "mid": "1",
-        "name": "carpet flooring"
+        "name": "carpet flooring",
+        "category": "Flooring",
+        "quantity": "100"
     }, {
         "mid": "2",
-        "name": "wood shelving"
+        "name": "wood shelving",
+        "category": "Shelves",
+        "quantity": "10"
     }],
     "sqrft": "20",
     "desc": "This project is awesome! I want to hire someone to fix up my bedroom."
@@ -48,10 +56,14 @@
     "location": "Tssawasawasawassen, BC",
     "materials": [{
         "mid": "1",
-        "name": "carpet flooring"
+        "name": "carpet flooring",
+        "category": "Flooring",
+        "quantity": "100"
     }, {
         "mid": "2",
-        "name": "wood shelving"
+        "name": "wood shelving",
+        "category": "Shelves",
+        "quantity": "10"
     }],
     "sqrft": "20",
     "desc": "This project is awesome! I want to hire someone to fix up my bathroom."
