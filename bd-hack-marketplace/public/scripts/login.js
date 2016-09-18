@@ -1,7 +1,7 @@
 var contractor_pid = "0";
 var Login = React.createClass({
   getInitialState: function() {
-    return {login: true, username: '', password: ''};
+    return {login: true, username: '', password: '', loggedin: false, name: ''};
   },
   componentDidMount: function() {
   },
@@ -14,6 +14,9 @@ var Login = React.createClass({
   handleClick: function() {
     this.setState({login: !this.state.login});
   },
+  signOut: function() {
+    this.setState({loggedin: false, name: '', login: true});
+  },
   loadProfileInfoFromServer: function() {
     $.ajax({
       url: this.props.personjson,
@@ -25,6 +28,7 @@ var Login = React.createClass({
           if(data[i] && data[i].user === this.state.username && data[i].pass === this.state.password) {
             // set session variable
             contractor_pid = data[i].pid;
+            this.setState({loggedin: !this.state.loggedin, name: data[i].name});
           }
         }
       }.bind(this),
@@ -53,9 +57,9 @@ var Login = React.createClass({
       }
   },
   render: function() {
-    return (
-      <div className="LoginStuffs">
-        <div className="mainLogin">
+    var displayUIStuff;
+    if(!this.state.loggedin) {
+      displayUIStuff = <div className="mainLogin">
           <div className="loginmodal-container">
             <h1>{this.state.login ? 'Login to Your Account' : 'Create Your Account'}</h1>
             <br/>
@@ -75,7 +79,18 @@ var Login = React.createClass({
               <a style={{cursor:'pointer'}}>Forgot Password</a>
             </div>
           </div>
-        </div>
+        </div>;
+    } else {
+      displayUIStuff = 
+      <div className="headerMain">
+        <a style={{cursor:'pointer'}} className="headerContractorName">{this.state.name}</a>
+        <a style={{cursor:'pointer'}} className="headerSignOut" onClick={this.signOut}>Sign Out</a>
+      </div>;
+    }
+    return (
+      <div className="LoginStuffs">
+      {displayUIStuff}
+        
       </div>
     );
   }

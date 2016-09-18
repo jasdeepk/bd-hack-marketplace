@@ -60,7 +60,24 @@ ul {
 
 .headerMain {
   background-color: #222;
-  height: 55px;
+  height: 70px;
   padding: 20px;
+  color: white;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  font-size: 22px;
+}
+
+.headerContractorName {
+  position: fixed;
+  left: 5%;
+  color: white;
+}
+
+.headerSignOut {
+  position: fixed;
+  left: 80%;
   color: white;
 }
