@@ -1,3 +1,4 @@
+var contractor_pid = "0";
 var Login = React.createClass({
   getInitialState: function() {
     return {login: true, username: '', password: ''};
@@ -13,19 +14,28 @@ var Login = React.createClass({
   handleClick: function() {
     this.setState({login: !this.state.login});
   },
+  loadProfileInfoFromServer: function() {
+    $.ajax({
+      url: this.props.personjson,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        // loop and find username email and set session PID
+        for(var i =  0; i < data.length; i++) {
+          if(data[i] && data[i].user === this.state.username && data[i].pass === this.state.password) {
+            // set session variable
+            contractor_pid = data[i].pid;
+          }
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.personjson, status, err.toString());
+      }.bind(this)
+    });
+  },
   handleSubmitClick: function() {
       if(this.state.login) { 
-        $.ajax({
-        url: this.props.url,
-        dataType: 'json',
-        cache: false,
-        success: function(data) {
-            //this.setState({data: data});
-        }.bind(this),
-        error: function(xhr, status, err) {
-            console.error(this.props.url, status, err.toString());
-        }.bind(this)
-        });
+        this.loadProfileInfoFromServer();
       } else {
           $.ajax({
             url: this.props.url,
@@ -72,6 +82,6 @@ var Login = React.createClass({
 });
 
 ReactDOM.render(
-  <Login url="/api/design"/>,
+  <Login personjson="/api/person"/>,
   document.getElementById('login')
 );
