@@ -78,8 +78,8 @@ var DesignView = React.createClass({
 			      				<h4><div id="grandtotal"></div></h4>
 		      				</div>
 		      				<div className="col-md-6">
-		      					<div className="col-md-offset-8 col-md-4">
-					      			<h4><button className="btn productpost" onClick={() => {this.updateProduct(this.state.data);updateTotal();}} >Update</button></h4>
+		      					<div className="col-md-offset-7 col-md-4">
+					      			<h4><button className="btn btn-primary productpost" onClick={() => {this.updateProduct(this.state.data);updateTotal();}} >Update</button></h4>
 		      					</div>
 		      				</div>
 			      		</div>
@@ -94,10 +94,10 @@ var DesignView = React.createClass({
 			      		<div className="row">
 				      		<DescBox data={this.state.data} />
 				      	</div>
-			      		<div className="row" style={{marginBottom: 1 + 'em'}}>
+			      		<div className="row" style={{marginBottom: 3 + 'em'}}>
 				      		<div className="col-md-offset-6">
-					      		<div className="col-md-offset-7 col-md-5">
-						      		<button className="btn" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
+					      		<div className="col-md-offset-6 col-md-5">
+						      		<button className="btn btn-primary" onClick={()=> {window.location = "pitch.html"}}>Submit pitch</button>
 						      	</div>
 					      	</div>
 				      	</div>

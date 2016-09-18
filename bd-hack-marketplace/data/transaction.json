@@ -48,35 +48,13 @@
         "status": "pending"
     },
     {
-        "tid": 1474194163869,
-        "pid": "3",
-        "did": "4",
-        "msg": "asdfasdfasdfasdf",
-        "rate": "asdfasdfasfasdf",
-        "status": "pending"
-    },
-    {
-        "tid": 1474199510387,
+        "tid": 1474215185671,
         "pid": "5",
         "did": "1",
-        "msg": "Hey I can do this",
+        "msg": "Hi, I would like to work on your bathroom.  You made some good choices, I don't have any further recommendations.",
         "rate": "300",
-        "status": "pending"
-    },
-    {
-        "tid": 1474200737056,
-        "pid": "5",
-        "did": "1",
-        "msg": "I can do this",
-        "rate": "400",
-        "status": "pending"
-    },
-    {
-        "tid": 1474200966420,
-        "pid": "5",
-        "did": "1",
-        "msg": "I think I can do this",
-        "rate": "500",
+        "name": "Modern Bathroom 114 Sqft",
+        "img": "imgs/3984510975.png",
         "status": "pending"
     }
 ]

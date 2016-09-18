@@ -79,13 +79,6 @@ var Login = React.createClass({
               <input type="button" name="login" className="login loginmodal-submit" 
                 value={this.state.login ? 'Login' : 'Create Account'} onClick={this.handleSubmitClick}/>
             </form>
-            <div className="login-help">
-              <a style={{cursor:'pointer'}} onClick={this.handleClick}>
-                {this.state.login ? 'Register' : 'I already have an Account'}
-              </a> 
-              - 
-              <a style={{cursor:'pointer'}}>Forgot Password</a>
-            </div>
           </div>
         </div>;
     } else {
