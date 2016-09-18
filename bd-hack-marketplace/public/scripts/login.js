@@ -1,7 +1,7 @@
-var contractor_pid = "0";
+
 var Login = React.createClass({
   getInitialState: function() {
-    return {login: true, username: '', password: ''};
+    return {login: true, username: '', password: '', loggedin: false};
   },
   componentDidMount: function() {
   },
@@ -13,6 +13,12 @@ var Login = React.createClass({
   },
   handleClick: function() {
     this.setState({login: !this.state.login});
+    window.localStorage.name = '';
+  },
+  signOut: function() {
+    localStorage.name ='';
+    localStorage.pid = '';
+    this.setState({loggedin: false, login: true});
   },
   loadProfileInfoFromServer: function() {
     $.ajax({
@@ -24,7 +30,11 @@ var Login = React.createClass({
         for(var i =  0; i < data.length; i++) {
           if(data[i] && data[i].user === this.state.username && data[i].pass === this.state.password) {
             // set session variable
-            contractor_pid = data[i].pid;
+
+            this.setState({loggedin: !this.state.loggedin});
+            localStorage.name = data[i].name;
+            localStorage.pid = data[i].pid;
+            window.location = "marketplace.html";
           }
         }
       }.bind(this),
@@ -53,9 +63,10 @@ var Login = React.createClass({
       }
   },
   render: function() {
-    return (
-      <div className="LoginStuffs">
-        <div className="mainLogin">
+    var displayUIStuff;
+    var name = localStorage.name;
+    if(!this.state.loggedin) {
+      displayUIStuff = <div className="mainLogin">
           <div className="loginmodal-container">
             <h1>{this.state.login ? 'Login to Your Account' : 'Create Your Account'}</h1>
             <br/>
@@ -75,7 +86,18 @@ var Login = React.createClass({
               <a style={{cursor:'pointer'}}>Forgot Password</a>
             </div>
           </div>
-        </div>
+        </div>;
+    } else {
+      displayUIStuff = 
+      <div className="headerMain">
+        <a style={{cursor:'pointer'}} className="headerContractorName">{name}</a>
+        <a style={{cursor:'pointer'}} className="headerSignOut" onClick={this.signOut}>Sign Out</a>
+      </div>;
+    }
+    return (
+      <div className="LoginStuffs">
+      {displayUIStuff}
+        
       </div>
     );
   }
