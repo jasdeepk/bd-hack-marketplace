@@ -83,19 +83,19 @@ var ProfileProjects = React.createClass({
 
 var ProfileReviews = React.createClass({
   loadProfileReviewsFromServer: function() {
-    // $.ajax({
-    //   url: this.props.reviewjson,
-    //   dataType: 'json',
-    //   cache: false,
-    //   success: function(data) {
-    //     //if data...get all users reviews....
-    //     //this.setState({personReviews: data});
+    $.ajax({
+      url: this.props.reviewjson,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        //if data...get all users reviews....
+        //this.setState({personReviews: data});
          this.setState({personReviews: [{reviewName: "Bill", reviewRating: "4"},{reviewName: "Betty", reviewRating: "3"}] });
-    //   }.bind(this),
-    //   error: function(xhr, status, err) {
-    //     console.error(this.props.reviewjson, status, err.toString());
-    //   }.bind(this)
-    // });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.reviewjson, status, err.toString());
+      }.bind(this)
+    });
   },
   componentDidMount: function() {
     this.loadProfileReviewsFromServer();
