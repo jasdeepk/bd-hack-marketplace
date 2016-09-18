@@ -1,13 +1,15 @@
 var designUrl = "/api/design/" + localStorage.selectedDesignId;
 
-var grandTotal = 0;
+var grandTotal;
 
 function updateTotal() {
+	grandTotal=0;
 	$('select.recommender option:selected').each(function() {
 		grandTotal += parseInt($(this).val());
 		return grandTotal;
 	});
-	$("#grandtotal").append("<div>Total: $" + grandTotal.toFixed(2) + "</div>")
+	$("#productgrandtotal").remove();
+	$("#grandtotal").append("<div id='productgrandtotal'>Total: $" + grandTotal.toFixed(2) + "</div>")
 }
 
 var DesignView = React.createClass({
@@ -44,8 +46,6 @@ var DesignView = React.createClass({
 			var material = selectedMaterials[i].innerText.substr(0, selectedMaterials[i].innerText.indexOf('('));
 			joinedMaterialsAndMids.push({mid: mids[i], material:  material.trim()});
 		};
-
-		console.log(joinedMaterialsAndMids);
 		$.ajax({
 	      url: designUrl,
 	      dataType: 'json',
@@ -78,7 +78,7 @@ var DesignView = React.createClass({
 	      				</div>
 	      				<div className="col-md-6">
 	      					<div className="col-md-offset-8 col-md-4">
-				      			<h4><button className="btn productpost" onClick={() => {this.updateProduct(this.state.data)}}>Update</button></h4>
+				      			<h4><button className="btn productpost" onClick={() => {this.updateProduct(this.state.data);updateTotal();}} >Update</button></h4>
 	      					</div>
 	      				</div>
 		      		</div>
