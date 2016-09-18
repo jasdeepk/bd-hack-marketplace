@@ -122,7 +122,7 @@ var DesignTitle = React.createClass({
 			title = 
 				<div className="row">
 					<div className="col-md-12">
-						<h1 key={this.props.data.did}>{this.props.data.name}</h1>
+						<h2 className="media-heading designName" key={this.props.data.did}>{this.props.data.name}</h2>
 						<div className="row">
 							<div className="col-mid-offset-1 col-md-6">
 								<h5>Posted on: {this.props.data.postdate}</h5>
