@@ -4,7 +4,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-var COMMENTS_FILE = path.join(__dirname, 'data/design.json');
+
+var DESIGNS_FILE = path.join(__dirname, 'data/design.json');
 var PERSON_FILE = path.join(__dirname, 'data/person.json');
 var REVIEW_FILE = path.join(__dirname, 'data/review.json');
 var TRANSACTION_FILE = path.join(__dirname, 'data/transaction.json');
@@ -26,13 +27,26 @@ app.use(function(req, res, next) {
     next();
 });
 
+// GET Designs
 app.get('/api/design', function(req, res) {
-  fs.readFile(COMMENTS_FILE, function(err, data) {
+  fs.readFile(DESIGNS_FILE, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
     res.json(JSON.parse(data));
+  });
+});
+
+// GET Person
+app.get('/api/person/id', function(req, res) {
+  fs.readFile(PERSON_FILE, function(err, data) {
+    var result = JSON.parse(data);
+    for (var i = result.length - 1; i >= 0; i--) {
+      if (result[i].pid === "5") {
+        res.json(result[i]);
+      }
+    };
   });
 });
 
@@ -43,6 +57,7 @@ app.get('/api/person', function(req, res) {
       console.error(err);
       process.exit(1);
     }
+    
     res.json(JSON.parse(data));
   });
 });

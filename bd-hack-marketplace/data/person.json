@@ -30,4 +30,13 @@
     "img": "picture/url/here",
     "desc": "Hi I'm Kylo Ren! My dad sucks and I have teenage angst!",
     "priviledge": "CONTRACTOR"
+},
+{
+    "pid": "5",
+    "name": "Rey",
+    "user": "rey@starwars.com",
+    "pass": "password",
+    "img": "imgs/rey-contractor-pic.jpg",
+    "desc": "Hi I'm Rey! I'm for sure not a skywalker/solo kid, I swear.",
+    "priviledge": "CONTRACTOR"
 }]
