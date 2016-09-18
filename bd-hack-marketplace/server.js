@@ -43,9 +43,7 @@ app.get('/api/person/:id', function(req, res) {
   fs.readFile(PERSON_FILE, function(err, data) {
     var result = JSON.parse(data);
     for (var i = result.length - 1; i >= 0; i--) {
-      console.log("hi");
       if (result[i].pid === req.params.id) {
-        console.log("hey");
         res.json(result[i]);
       }
     };
