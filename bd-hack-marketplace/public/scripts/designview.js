@@ -25,7 +25,7 @@ var DesignView = React.createClass({
 	render: function() {
 	    return (
 	      <div className="designview">
-		      <DesignTitle data={this.state.data[did]} />
+		      <DesignTitle data={this.state.data} />
 		      <div className="row">
 		      	<div className="col-md-6">
 		      		<div className="row">
