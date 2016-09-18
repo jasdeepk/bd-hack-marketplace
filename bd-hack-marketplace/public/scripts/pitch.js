@@ -5,7 +5,8 @@ var Pitch = React.createClass({
       		dataType: 'json',
       		cache: false,
       		success: function(data) {
-        	this.setState({designData: data[1]});
+        	this.setState({designData: data[parseInt(localStorage.selectedDesignId)-1]});
+          console.log(parseInt(localStorage.selectedDesignId));
       		}.bind(this),
       		
       		error: function(xhr, status, err) {
@@ -57,7 +58,7 @@ var Pitch = React.createClass({
     document.getElementById("headerName").innerHTML = localStorage.getItem("name");
 	},
 	render:function() {
-		var ddata = this.state.designData[1];
+
 		return (	
 			 <div className="pitchDiv">
 			 	<li className="list-group-item" key={this.state.designData.did}>
@@ -95,10 +96,11 @@ var CommentForm = React.createClass({
     var msg = this.state.msg.trim();
     var rate = this.state.rate.trim();
     var pid = localStorage.pid;
+    var did = localStorage.selectedDesignId;
     if (!rate || !msg) {
       return;
     }
-    this.props.onCommentSubmit({msg: msg, rate: rate, pid: pid});
+    this.props.onCommentSubmit({msg: msg, rate: rate, pid: pid, did:did});
     this.setState({msg: '', rate: ''});
   },
   render: function() {
@@ -115,7 +117,7 @@ var CommentForm = React.createClass({
         <input
           className="rateBox"
           type="text"
-          placeholder="rate"
+          placeholder="Charge rate"
           value={this.state.rate}
           onChange={this.handleRateChange}
         />
@@ -127,6 +129,6 @@ var CommentForm = React.createClass({
 });
 
 ReactDOM.render(
-	<Pitch designUrl="/api/design" transactionUrl="/api/transaction" />, 
+	<Pitch designUrl="/api/design/" transactionUrl="/api/transaction" />, 
 	document.getElementById('pitch')
 );

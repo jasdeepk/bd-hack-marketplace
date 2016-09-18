@@ -139,7 +139,7 @@ app.post('/api/transaction', function(req, res) {
     var newTransaction = {
       tid: Date.now(),
       pid: req.body.pid,
-      did: "1",
+      did: req.body.did,
       msg: req.body.msg,
       rate: req.body.rate,
       status: "pending",
