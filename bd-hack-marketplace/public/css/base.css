@@ -70,6 +70,7 @@ ul {
   left: 0;
   position: fixed;
   font-size: 22px;
+  z-index: 100;
 }
 
 .headerContractorName {
