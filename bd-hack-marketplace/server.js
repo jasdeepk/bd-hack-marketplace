@@ -16,7 +16,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-var COMMENTS_FILE = path.join(__dirname, 'data/design.json');
+var DESIGNS_FILE = path.join(__dirname, 'data/design.json');
+var PERSON_FILE = path.join(__dirname, 'data/person.json');
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -35,13 +36,38 @@ app.use(function(req, res, next) {
     next();
 });
 
+
+
+// GET Designs
 app.get('/api/design', function(req, res) {
-  fs.readFile(COMMENTS_FILE, function(err, data) {
+  fs.readFile(DESIGNS_FILE, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
     res.json(JSON.parse(data));
+  });
+});
+
+// GET Person
+app.get('/api/user/id', function(req, res) {
+  fs.readFile(PERSON_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    console.log("before");
+    var result = JSON.parse(data);
+    for (var i = result.length - 1; i >= 0; i--) {
+      console.log(i);
+      if (result[i].pid === "5") {
+        console.log("succeed");
+        res.json(result[i]);
+      }
+    };
+    console.log("after");
+
+    // res.json(JSON.parse(data));
   });
 });
 
