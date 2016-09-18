@@ -97,10 +97,12 @@ var CommentForm = React.createClass({
     var rate = this.state.rate.trim();
     var pid = localStorage.pid;
     var did = localStorage.selectedDesignId;
+    var name = localStorage.selectedDesignName;
+    var image = localStorage.selectedDesignImage;
     if (!rate || !msg) {
       return;
     }
-    this.props.onCommentSubmit({msg: msg, rate: rate, pid: pid, did:did});
+    this.props.onCommentSubmit({msg: msg, rate: rate, pid: pid, did:did, name:name, image:image});
     this.setState({msg: '', rate: ''});
   },
   render: function() {
