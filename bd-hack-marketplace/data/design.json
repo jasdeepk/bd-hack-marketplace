@@ -58,7 +58,7 @@
 }, {
     "did": "4",
     "name": "Design 4",
-    "img": "picture/url/here",
+    "img": "/../imgs/3984510975.png",
     "pid": "2",
     "rooomtype": "Garage",
     "startdeadline": "2016-03-28",
@@ -67,10 +67,14 @@
     "location": "Surrey, BC",
     "materials": [{
         "mid": "1",
-        "name": "carpet flooring"
+        "name": "Carpet flooring",
+        "category": "Flooring",
+        "quantity": "100"
     }, {
         "mid": "2",
-        "name": "wood shelving"
+        "name": "American Standard Toilet",
+        "category": "Toilet",
+        "quantity": "1"
     }],
     "sqrft": "20",
     "desc": "This project is awesome! I want to hire someone to fix up my garage."
