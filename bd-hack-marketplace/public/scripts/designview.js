@@ -2,6 +2,14 @@ var designUrl = "/api/design/" + localStorage.selectedDesignId;
 
 var grandTotal = 0;
 
+function updateTotal() {
+	$('select.recommender option:selected').each(function() {
+		grandTotal += parseInt($(this).val());
+		return grandTotal;
+	});
+	$("#grandtotal").append("<div>Total: $" + grandTotal.toFixed(2) + "</div>")
+}
+
 var DesignView = React.createClass({
 	loadDesignInfoFromServer: function() {
 	    $.ajax({
@@ -180,7 +188,7 @@ var Recommended = React.createClass({
 				productTotal = (Number(product.price)*Number(quantity)).toFixed(2);
 				if (name === product.title) {
 					return (
-						<option key={product.skuNumber} value={productTotal} selected>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
+						<option key={product.skuNumber} name={product.title} value={productTotal} selected>{product.title} (${Number(product.price).toFixed(2)}/{product.priceUnit} x {quantity} unit(s) = Total: ${productTotal})</option>
 					);
 				}
 				else {
@@ -230,13 +238,6 @@ ReactDOM.render(
   document.getElementById('designview')
 );	
 
-function updateTotal() {
-	$('select.recommender option:selected').each(function() {
-		grandTotal += parseInt($(this).val());
-		return grandTotal;
-	});
-	$("#grandtotal").append("<div>Total: $" + grandTotal.toFixed(2) + "</div>")
-}
 
 setTimeout(
   function() {updateTotal();
