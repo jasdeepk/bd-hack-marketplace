@@ -1,3 +1,5 @@
+var userUrl = "/api/person/" + localStorage.pid;
+
 var Marketplace = React.createClass({
 
   loadUserFromServer: function() {
@@ -32,12 +34,11 @@ var Marketplace = React.createClass({
   componentDidMount: function() {
     this.loadDesignsFromServer();
     this.loadUserFromServer();
-    // setInterval(this.loadDesignsFromServer, this.props.pollInterval);
   },
   render: function() {
       var designs = this.state.designData.map(function(design) {
         return (
-          <li className="list-group-item" key={design.did}>
+          <a href="design_detail.html" className="list-group-item" key={design.did}>
             <div className="media">
               <div className="media-left">
                 <img className="media-object" src={design.img} width="200" height="200"></img>
@@ -50,22 +51,25 @@ var Marketplace = React.createClass({
                 <h4 className="media-heading">{design.sqrft} Sqft</h4>
               </div>
             </div>
-          </li>
+          </a>
         );
       });
 
       return (
         <div>
-          <h2> {this.state.userData.name} </h2>
-          <ul className="list-group">
+          <div className="headerMain">
+            <a href="profile.html" style={{cursor:'pointer'}} className="headerContractorName">{localStorage.name}</a>
+            <a style={{cursor:'pointer'}} className="headerSignOut">Sign Out</a>
+          </div>
+          <div className="list-group">
             {designs}
-          </ul>
+          </div>
         </div>
       );
   }
 });
 
 ReactDOM.render(
-  <Marketplace designsUrl="/api/design" userUrls="/api/person/id" pollInterval={2000} />,
+  <Marketplace designsUrl="/api/design" userUrls={userUrl} pollInterval={2000} />,
   document.getElementById('marketplace')
 );
