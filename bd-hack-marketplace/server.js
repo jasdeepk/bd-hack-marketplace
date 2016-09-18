@@ -1,15 +1,3 @@
-/**
- * This file provided by Facebook is for non-commercial testing and evaluation
- * purposes only. Facebook reserves all rights not expressly granted.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
 var fs = require('fs');
 var path = require('path');
 var express = require('express');
@@ -17,6 +5,9 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var COMMENTS_FILE = path.join(__dirname, 'data/design.json');
+var PERSON_FILE = path.join(__dirname, 'data/person.json');
+var REVIEW_FILE = path.join(__dirname, 'data/review.json');
+var TRANSACTION_FILE = path.join(__dirname, 'data/transaction.json');
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -45,6 +36,38 @@ app.get('/api/design', function(req, res) {
   });
 });
 
+// GET PERSON JSON FILE CONTENTS
+app.get('/api/person', function(req, res) {
+  fs.readFile(PERSON_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    res.json(JSON.parse(data));
+  });
+});
+
+// GET REVIEW JSON FILE CONTENTS
+app.get('/api/review', function(req, res) {
+  fs.readFile(REVIEW_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    res.json(JSON.parse(data));
+  });
+});
+
+// GET TRANSACTION JSON FILE CONTENTS
+app.get('/api/transaction', function(req, res) {
+  fs.readFile(TRANSACTION_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    res.json(JSON.parse(data));
+  });
+});
 
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
