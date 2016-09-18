@@ -1,6 +1,7 @@
 var userUrl = "/api/person/" + localStorage.pid;
 var reviewUrl = "/api/personReviews/" + localStorage.pid;
 var transactionUrl = "/api/personTransactions/" + localStorage.pid;
+var GlobalFlag = false;
 
 var Profile = React.createClass({
   componentDidMount: function() {
@@ -96,39 +97,36 @@ var ProfileTransactions = React.createClass({
   getInitialState: function() {
     return {personTransactions: [], transactionDesign: {} };
   },
-  // getTransactionDesign: function(did){
-  //   var designjson = "/api/design/" + did;
-  //   $.ajax({
-  //     url: designjson,
-  //     dataType: 'json',
-  //     cache: false,
-  //     success: function(data) {
-  //       if (data != null){
-  //         unrendered = false;
-  //         this.setState({transactionDesign: data });
-  //         return data;
-  //       }
-  //     }.bind(this),
-  //     error: function(xhr, status, err) {
-  //       console.error(this.props.designjson, status, err.toString());
-  //     }.bind(this)
-  //   });
-  // },
-  render: function() {
-    var that = this;
-    var transactions = this.state.personTransactions.map(function(transaction) {
-      return (
-        <li className="transactions-list-group-item" key={transaction.tid}>
+  getTransactionDesign: function(transaction){
+    var designjson = "/api/design/" + transaction.did;
+    var temp;
+    $.ajax({
+      url: designjson,
+      dataType: 'json',
+      cache: false,
+      async: false,
+      success: function(data) {
+        if (data != null){
+          temp = data;
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.designjson, status, err.toString());
+      }.bind(this)
+    });
+    
+return (
+<a href="design_detail.html" className="transactions-list-group-item" key={transaction.tid} onClick={() => { that.setSelectedDesign(transaction) }}>
           <div className="media">
             <div className="media-body">
               <br /> 
               <div className="col-md-4">
                 <div className="media-left">
-                  <img className="media-object img" src={transaction.img} width="200" height="200"></img>
+                  <img className="media-object img" src={temp.img} width="200" height="200"></img>
                 </div>
               </div>
               <div className="col-md-8">
-                <h2 className="media-heading">{transaction.name}</h2>
+                <h2 className="media-heading">{temp.name}</h2>
                 <br /> 
                 <h4 className="media-heading">Message: {transaction.msg}</h4>
                 <br /> 
@@ -138,7 +136,18 @@ var ProfileTransactions = React.createClass({
               </div>
             </div>
           </div>
-        </li>
+        </a>
+  )
+
+  },
+  setSelectedDesign: function(transaction) {
+    localStorage.selectedDesignId = transaction.did;
+  },
+  render: function() {
+    var that = this;
+    var transactions = this.state.personTransactions.map(function(transaction) {
+      return (
+        that.getTransactionDesign(transaction)
       );
     });
     
