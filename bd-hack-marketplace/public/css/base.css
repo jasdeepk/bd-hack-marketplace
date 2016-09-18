@@ -57,3 +57,10 @@ p, ul {
 ul {
   padding-left: 30px;
 }
+
+.headerMain {
+  background-color: #222;
+  height: 55px;
+  padding: 20px;
+  color: white;
+}
