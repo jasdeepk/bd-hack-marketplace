@@ -57,9 +57,9 @@ var ProfileInfo = React.createClass({
                 </div>
               </div>
               <div className="col-md-7"> 
-                <h2 className="personName">
+                <h1 className="personName">
                   {this.state.personName}
-                </h2>
+                </h1>
                 
                 <h4 className="personDesc">
                   {this.state.personDesc}
@@ -93,26 +93,53 @@ var ProfileTransactions = React.createClass({
     this.loadProfileTransactionsFromServer();
   },
   getInitialState: function() {
-    return {personTransactions: [] };
+    return {personTransactions: [], transactionDesign: {} };
+  },
+  getTransactionDesign: function(did){
+    var designjson = "/api/design/" + did;
+    $.ajax({
+      url: designjson,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        if (data != null){
+          this.setState({transactionDesign: data });
+        }
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.designjson, status, err.toString());
+      }.bind(this)
+    });
   },
   render: function() {
+    var that = this;
     var transactions = this.state.personTransactions.map(function(transaction) {
       return (
         <li className="transactions-list-group-item" key={transaction.tid}>
           <div className="media">
             <div className="media-body">
               <br /> 
-              <h2 className="media-heading">Did: {transaction.did}</h2>
-              <h4 className="media-heading">Message: {transaction.msg}</h4>
-              <h4 className="media-heading">Rate: {transaction.rate}</h4>
-              <h4 className="media-heading">Status: {transaction.status}</h4>
+              {that.getTransactionDesign(transaction.did)}
+              <div className="col-md-4">
+                <div className="media-left">
+                  <img className="media-object img" src={that.state.transactionDesign.img} width="200" height="200"></img>
+                </div>
+              </div>
+              <div className="col-md-8">
+                <h2 className="media-heading">{that.state.transactionDesign.name}</h2>
+                <br /> 
+                <h4 className="media-heading">Message: {transaction.msg}</h4>
+                <br /> 
+                <h4 className="media-heading">Rate: {transaction.rate}</h4>
+                <br /> 
+                <h4 className="media-heading">Status: {transaction.status}</h4>
+              </div>
             </div>
           </div>
         </li>
       );
     });
     
-    // TODO: get all the designs of the transactions and display their stuff too 
     return (
       <div className="profileTransactions">
         <div className="profiletransactionmodal-panel panel-default">
